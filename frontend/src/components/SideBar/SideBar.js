@@ -14,7 +14,10 @@ function SideBar() {
       <h1 className="title">Covid App</h1>
       <ul className="nav">
         <li className="item">
-          <NavLink end className="nav-item d-flex align-items-center" to="/">
+          <NavLink
+            className="nav-item d-flex align-items-center"
+            to="/dashboard"
+          >
             <FontAwesomeIcon icon={faHome} width="30" />
             <span className="link-text">Dashboard</span>
           </NavLink>
