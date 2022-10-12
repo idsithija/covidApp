@@ -1,11 +1,7 @@
-import Filter from "./view/Filter/Filter";
+import RouteGaurd from "./Routes/Routes";
 
 function App() {
-  return (
-    <div className="App">
-      <Filter />
-    </div>
-  );
+  return <RouteGaurd />;
 }
 
 export default App;

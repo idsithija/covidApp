@@ -1,8 +1,37 @@
 import React from "react";
 import SideBar from "../../components/SideBar/SideBar";
 import TopBar from "../../components/TopBar/TopBar";
+import DataTable from "react-data-table-component";
 
 function Filter() {
+  const columns = [
+    {
+      name: "Patient name",
+      selector: (row) => row.title,
+    },
+    {
+      name: "Location",
+      selector: (row) => row.year,
+    },
+    {
+      name: "Address",
+      selector: (row) => row.id,
+    },
+  ];
+
+  const data = [
+    {
+      id: 1,
+      title: "Beetlejuice",
+      year: "1988",
+    },
+    {
+      id: 2,
+      title: "Ghostbusters",
+      year: "1984",
+    },
+  ];
+
   return (
     <>
       <SideBar />
@@ -55,6 +84,7 @@ function Filter() {
                 </button>
               </div>
             </div>
+            <DataTable columns={columns} data={data} />
           </div>
         </div>
       </div>
