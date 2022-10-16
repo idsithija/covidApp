@@ -1,9 +1,39 @@
 import { Formik } from "formik";
 import React from "react";
+import DataTable from "react-data-table-component";
 import SideBar from "../../components/SideBar/SideBar";
 import TopBar from "../../components/TopBar/TopBar";
 
-function Support() {
+function Disease() {
+  const columns = [
+    {
+      name: "Disease Name",
+      selector: (row) => row.title,
+    },
+    {
+      name: "Count",
+      selector: (row) => row.count,
+    },
+    {
+      name: "Location",
+      selector: (row) => row.location,
+    },
+  ];
+
+  const data = [
+    {
+      id: 1,
+      title: "Covid disease",
+      count: "100000",
+      location: "China",
+    },
+    {
+      id: 2,
+      title: "Disease 01",
+      count: "600000",
+      location: "India",
+    },
+  ];
   return (
     <>
       <SideBar />
@@ -11,44 +41,47 @@ function Support() {
       <div className="layout-body">
         <div className="layout-container">
           <div className="shadow-sm p-3 mb-5 bg-white rounded filter-page">
-            <h1 className="title">Support</h1>
+            <h1 className="title">Disease</h1>
+            <DataTable className="mt-4" columns={columns} data={data} />
+          </div>
+          <div className="shadow-sm p-3 bg-white rounded filter-page">
+            <h1 className="title">Add Disease</h1>
             <div className="mt-4">
               <Formik>
                 {(props) => (
                   <form>
                     <div className="row">
                       <div className="col-6 mb-4">
-                        <label className="name fw-semibold">Name</label>
+                        <label className="name fw-semibold">Disease Name</label>
                         <input
                           className="form-control mt-1"
-                          name="name"
-                          placeholder="Name..."
+                          name="disease"
+                          placeholder="Disease Name..."
                         />
                       </div>
                       <div className="col-6 mb-4">
                         <label className="name fw-semibold">
-                          Email Address
+                          Vaccine Count
                         </label>
                         <input
                           className="form-control mt-1"
-                          name="email"
-                          placeholder="Email Address..."
+                          name="vaccine_count"
+                          placeholder="Vaccine Count..."
                         />
                       </div>
-                      <div className="col-12 mb-4">
-                        <label className="name fw-semibold">Details</label>
-                        <textarea
-                          rows="10"
+                      <div className="col-6 mb-4">
+                        <label className="name fw-semibold">Location</label>
+                        <input
                           className="form-control mt-1"
-                          name="details"
-                          placeholder="Details..."
+                          name="location"
+                          placeholder="Location..."
                         />
                       </div>
                     </div>
                     <div className="row">
                       <div className="col-12 d-flex justify-content-end">
                         <button type="button" className="btn btn-primary w-25">
-                          Submit
+                          Add Disease
                         </button>
                       </div>
                     </div>
@@ -63,4 +96,4 @@ function Support() {
   );
 }
 
-export default Support;
+export default Disease;

@@ -26,7 +26,7 @@ function TopBar() {
   }, [wrapperRef]);
 
   const clickMenu = () => {
-    setOpenMenu(true);
+    setOpenMenu((current) => !current);
   };
   return (
     <div className="top-bar d-flex justify-content-end">

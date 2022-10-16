@@ -8,6 +8,7 @@ import {
   faArchive,
   faLocationArrow,
   faQuestionCircle,
+  faListAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, NavLink } from "react-router-dom";
 
@@ -54,6 +55,12 @@ function SideBar() {
           <NavLink className="nav-item" to="/locations">
             <FontAwesomeIcon icon={faLocationArrow} width="30" />
             <span className="link-text">Locations</span>
+          </NavLink>
+        </li>
+        <li className="item">
+          <NavLink className="nav-item" to="/Disease">
+            <FontAwesomeIcon icon={faListAlt} width="30" />
+            <span className="link-text">Disease</span>
           </NavLink>
         </li>
         <li className="item">

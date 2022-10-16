@@ -1,8 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import SideBar from "../../components/SideBar/SideBar";
 import TopBar from "../../components/TopBar/TopBar";
 
 function UserDashboard() {
+  const Navigate = useNavigate();
+  const clickSetting = () => {
+    Navigate("/details");
+  };
   return (
     <>
       <SideBar />
@@ -21,7 +26,11 @@ function UserDashboard() {
               </div>
             </div>
             <div className="col-3">
-              <button type="button" className="btn btn-primary float-end">
+              <button
+                type="button"
+                className="btn btn-primary float-end"
+                onClick={() => clickSetting()}
+              >
                 User Account Settings
               </button>
             </div>

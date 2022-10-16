@@ -29,24 +29,22 @@ function AdminSettings() {
                     <span className="title-color ms-4">2000/05/30</span>
                   </li>
                   <li className="mb-3 mt-3 col-6">
-                    NIC:
+                    NIC :
                     <span className="title-color ms-4">200064746363727</span>
                   </li>
                   <li className="mb-3 mt-3 col-6">
-                    Gender:
-                    <span className="title-color ms-4">Male</span>
+                    Gender :<span className="title-color ms-4">Male</span>
                   </li>
                   <li className="mb-3 mt-3 col-6">
-                    Blood Group:
-                    <span className="title-color ms-4">O+</span>
+                    Blood Group :<span className="title-color ms-4">O+</span>
                   </li>
                   <hr className="line mt-3 mb-3"></hr>
                   <li className="mb-3 mt-3 col-6">
-                    Address Line 01:
+                    Address Line 01 :
                     <span className="title-color ms-4">25 B</span>
                   </li>
                   <li className="mb-3 mt-3 col-6">
-                    Address Line 02:
+                    Address Line 02 :
                     <span className="title-color ms-4">Galhena Road</span>
                   </li>
                   <li className="mb-3 mt-3 col-6">

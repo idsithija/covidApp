@@ -10,6 +10,8 @@ import SignUp from "../view/SignUp/SignUp";
 import Status from "../view/Status/Status";
 import Locations from "../view/Locations/Locations";
 import Support from "../view/Support/Support";
+import Disease from "../view/Disease/Disease";
+import UserSettings from "../view/UserSettings/UserSettings";
 
 function RouteGaurd() {
   return (
@@ -22,9 +24,11 @@ function RouteGaurd() {
         <Route path="/status" element={<Status />} />
         <Route path="/data" element={<Filter />} />
         <Route path="/locations" element={<Locations />} />
+        <Route path="/disease" element={<Disease />} />
         <Route path="/settings" element={<AdminSettings />} />
         <Route path="/ticket" element={<Ticket />} />
         <Route path="/support" element={<Support />} />
+        <Route path="/details" element={<UserSettings />} />
       </Routes>
     </Router>
   );

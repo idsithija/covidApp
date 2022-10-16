@@ -1,8 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import SideBar from "../../components/SideBar/SideBar";
 import TopBar from "../../components/TopBar/TopBar";
 
 function AdminDashboard() {
+  const Navigate = useNavigate();
+  const clickSetting = () => {
+    Navigate("/details");
+  };
   return (
     <>
       <SideBar />
@@ -13,7 +18,11 @@ function AdminDashboard() {
             <div className="welcome-title">Welcome to Dashboard...!</div>
           </div>
           <div className="d-flex justify-content-end">
-            <button type="button" className="btn btn-primary">
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={() => clickSetting()}
+            >
               Admin Account Settings
             </button>
           </div>
