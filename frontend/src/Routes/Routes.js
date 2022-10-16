@@ -6,12 +6,14 @@ import Filter from "../view/Filter/Filter";
 import AdminSettings from "../view/Settings/AdminSettings";
 import Ticket from "../view/Ticket/Ticket";
 import SignIn from "../view/SignIn/SignIn";
+import SignUp from "../view/SignUp/SignUp";
 
 function RouteGaurd() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<SignIn />} />
+        <Route path="/register" element={<SignUp />} />
         <Route path="/dashboard" element={<AdminDashboard />} />
         <Route path="/dashboard-1" element={<UserDashboard />} />
         <Route path="/data" element={<Filter />} />

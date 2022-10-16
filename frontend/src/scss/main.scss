@@ -13,6 +13,7 @@ body {
 
 body {
   font-family: "Poppins", sans-serif;
+  font-weight: 400;
 }
 
 h1,
@@ -43,6 +44,10 @@ a {
 
 .title-color {
   color: #216fed;
+}
+
+.cp {
+  cursor: pointer;
 }
 
 .layout-body {
@@ -138,4 +143,8 @@ a {
 .sign-in-img {
   width: auto;
   height: 24vw;
+}
+
+.sing-in-right-title {
+  font-size: 25px;
 }
