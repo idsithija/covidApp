@@ -37,6 +37,14 @@ a {
   text-decoration: none;
 }
 
+.main-color {
+  background-color: #edf2f6;
+}
+
+.title-color {
+  color: #216fed;
+}
+
 .layout-body {
   width: 100%;
   height: calc(100vh - 70px);
@@ -47,6 +55,11 @@ a {
   .layout-container {
     padding: 30px;
   }
+}
+
+.login-p-l {
+  border-top-right-radius: 3%;
+  border-bottom-right-radius: 3%;
 }
 
 .top-bar {
@@ -120,4 +133,9 @@ a {
     font-size: 20px;
     color: #07398b;
   }
+}
+
+.sign-in-img {
+  width: auto;
+  height: 24vw;
 }
