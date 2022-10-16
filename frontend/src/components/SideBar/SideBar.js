@@ -7,13 +7,18 @@ import {
   faCog,
   faArchive,
   faLocationArrow,
+  faQuestionCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function SideBar() {
   return (
     <div className="side-bar">
-      <h1 className="title">Covid App</h1>
+      <h1 className="title">
+        <Link className="nav-item d-flex align-items-center" to="/dashboard">
+          Covid App
+        </Link>
+      </h1>
       <ul className="nav">
         <li className="item">
           <NavLink
@@ -22,6 +27,15 @@ function SideBar() {
           >
             <FontAwesomeIcon icon={faHome} width="30" />
             <span className="link-text">Dashboard</span>
+          </NavLink>
+        </li>
+        <li className="item">
+          <NavLink
+            className="nav-item d-flex align-items-center"
+            to="/dashboard1"
+          >
+            <FontAwesomeIcon icon={faHome} width="30" />
+            <span className="link-text">Dashboard 1</span>
           </NavLink>
         </li>
         <li className="item">
@@ -46,6 +60,12 @@ function SideBar() {
           <NavLink className="nav-item" to="/ticket">
             <FontAwesomeIcon icon={faTicket} width="30" />
             <span className="link-text">Ticket</span>
+          </NavLink>
+        </li>
+        <li className="item">
+          <NavLink className="nav-item" to="/support">
+            <FontAwesomeIcon icon={faQuestionCircle} width="30" />
+            <span className="link-text">Support</span>
           </NavLink>
         </li>
         <li className="item">

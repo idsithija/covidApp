@@ -36,6 +36,7 @@ li {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 .main-color {
@@ -59,6 +60,10 @@ a {
   height: auto;
 }
 
+.gray-color {
+  color: #737b8b;
+}
+
 .layout-body {
   width: 100%;
   height: calc(100vh - 70px);
@@ -76,11 +81,27 @@ a {
   border-bottom-right-radius: 3%;
 }
 
+.top-pro {
+  width: 60px;
+  height: 60px;
+}
+
 .top-bar {
   width: 100%;
   height: 70px;
   z-index: 1;
   background-color: #edf2f6;
+  padding: 0 30px;
+
+  span {
+    font-size: 15px;
+  }
+}
+
+.menu {
+  position: absolute;
+  top: 65px;
+  right: 50px;
 }
 
 .side-bar {

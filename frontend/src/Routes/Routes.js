@@ -9,6 +9,7 @@ import SignIn from "../view/SignIn/SignIn";
 import SignUp from "../view/SignUp/SignUp";
 import Status from "../view/Status/Status";
 import Locations from "../view/Locations/Locations";
+import Support from "../view/Support/Support";
 
 function RouteGaurd() {
   return (
@@ -17,12 +18,13 @@ function RouteGaurd() {
         <Route path="/" element={<SignIn />} />
         <Route path="/register" element={<SignUp />} />
         <Route path="/dashboard" element={<AdminDashboard />} />
-        <Route path="/dashboard-1" element={<UserDashboard />} />
+        <Route path="/dashboard1" element={<UserDashboard />} />
         <Route path="/status" element={<Status />} />
         <Route path="/data" element={<Filter />} />
         <Route path="/locations" element={<Locations />} />
         <Route path="/settings" element={<AdminSettings />} />
         <Route path="/ticket" element={<Ticket />} />
+        <Route path="/support" element={<Support />} />
       </Routes>
     </Router>
   );
