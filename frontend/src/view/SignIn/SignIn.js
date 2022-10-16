@@ -1,9 +1,14 @@
 import { Formik } from "formik";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SignInImg from "../../assets/img/login_bg.png";
 
 function SignIn() {
+  const Navigate = useNavigate();
+
+  const goDashboard = () => {
+    Navigate("/dashboard");
+  };
   return (
     <div className="vh-100 d-flex">
       <div className="col-8 h-100 main-color login-p-l">
@@ -42,7 +47,11 @@ function SignIn() {
                 </div>
                 <div className="row mt-5">
                   <div className="col-12">
-                    <button type="button" className="btn btn-primary w-100">
+                    <button
+                      type="button"
+                      className="btn btn-primary w-100"
+                      onClick={() => goDashboard()}
+                    >
                       Sign In
                     </button>
                   </div>
