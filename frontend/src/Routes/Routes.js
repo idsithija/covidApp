@@ -7,6 +7,8 @@ import AdminSettings from "../view/Settings/AdminSettings";
 import Ticket from "../view/Ticket/Ticket";
 import SignIn from "../view/SignIn/SignIn";
 import SignUp from "../view/SignUp/SignUp";
+import Status from "../view/Status/Status";
+import Locations from "../view/Locations/Locations";
 
 function RouteGaurd() {
   return (
@@ -16,7 +18,9 @@ function RouteGaurd() {
         <Route path="/register" element={<SignUp />} />
         <Route path="/dashboard" element={<AdminDashboard />} />
         <Route path="/dashboard-1" element={<UserDashboard />} />
+        <Route path="/status" element={<Status />} />
         <Route path="/data" element={<Filter />} />
+        <Route path="/locations" element={<Locations />} />
         <Route path="/settings" element={<AdminSettings />} />
         <Route path="/ticket" element={<Ticket />} />
       </Routes>

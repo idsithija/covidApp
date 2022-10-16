@@ -5,6 +5,8 @@ import {
   faDatabase,
   faTicket,
   faCog,
+  faArchive,
+  faLocationArrow,
 } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 
@@ -23,9 +25,21 @@ function SideBar() {
           </NavLink>
         </li>
         <li className="item">
+          <NavLink className="nav-item" to="/status">
+            <FontAwesomeIcon icon={faArchive} width="30" />
+            <span className="link-text">Status</span>
+          </NavLink>
+        </li>
+        <li className="item">
           <NavLink className="nav-item" to="/data">
             <FontAwesomeIcon icon={faDatabase} width="30" />
             <span className="link-text">Data</span>
+          </NavLink>
+        </li>
+        <li className="item">
+          <NavLink className="nav-item" to="/locations">
+            <FontAwesomeIcon icon={faLocationArrow} width="30" />
+            <span className="link-text">Locations</span>
           </NavLink>
         </li>
         <li className="item">

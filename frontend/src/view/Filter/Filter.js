@@ -39,8 +39,8 @@ function Filter() {
       <div className="layout-body">
         <div className="layout-container">
           <div className="shadow-sm p-3 mb-5 bg-white rounded filter-page">
-            <h1 className="title">Admin Filter Page</h1>
-            <div className="filter-section">
+            <h1 className="title">Filter Page</h1>
+            <div className="filter-section mt-4">
               <div className="row flex-wrap mt-3 mb-3">
                 <div className="col-3">
                   <label className="name">Name</label>
