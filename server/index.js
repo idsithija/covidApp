@@ -1,9 +1,10 @@
-require("dotenv").config();
-const express = require("express");
-const app = express();
+const app = require("./app");
+const http = require("http");
+const config = require("./utils/config");
+const logger = require("./utils/logger");
 
-app.use(express.static("build"));
+const server = http.createServer(app);
 
-const PORT = process.env.PORT;
-app.listen(PORT);
-console.log(`Server running on port ${PORT}`);
+server.listen(config.PORT, () => {
+  logger.info(`Server running on port ${config.PORT}`);
+});
