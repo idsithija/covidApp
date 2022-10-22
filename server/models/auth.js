@@ -1,11 +1,20 @@
 const mongoose = require("mongoose");
 
-const authSchema = new mongoose.Schema({
-  name: String,
-  password: String,
-  usertype: String,
-  date: String,
-});
+const authSchema = new mongoose.Schema(
+  {
+    username: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    usertype: String,
+  },
+  { timestamps: true }
+);
 
 authSchema.set("toJSON", {
   transform: (document, returnedObject) => {
@@ -15,4 +24,4 @@ authSchema.set("toJSON", {
   },
 });
 
-module.exports = mongoose.model("auth", authSchema);
+module.exports = mongoose.model("Auth", authSchema);

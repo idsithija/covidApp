@@ -7,8 +7,6 @@ const mongoose = require("mongoose");
 const middleware = require("./utils/midddleware");
 const authRouter = require("./controllers/auth");
 
-logger.info("connecting to", config.MONGODB_URI);
-
 mongoose
   .connect(config.MONGOOSE_URL)
   .then(() => {

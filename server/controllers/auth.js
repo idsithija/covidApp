@@ -1,22 +1,58 @@
 const authRouter = require("express").Router();
-const auth = require("../models/auth");
+const Auth = require("../models/auth");
+const bcrypt = require("bcrypt");
+const config = require("../utils/config");
 
-authRouter.post("/", (request, response, next) => {
-  const body = request.body;
+const { sign } = require("jsonwebtoken");
 
-  const user = new auth({
-    name: body.name,
-    password: body.password,
-    usertype: body.usertype,
-    date: new Date(),
+authRouter.post("/", async (request, response, next) => {
+  const body = await request.body;
+
+  bcrypt.hash(body.password, 10).then((hash) => {
+    const user = new Auth({
+      username: body.username,
+      password: hash,
+      usertype: body.usertype,
+    });
+
+    user
+      .save()
+      .then((data) => {
+        response.json(data);
+      })
+      .catch((error) => next(error));
   });
+});
 
-  user
-    .save()
-    .then((data) => {
-      response.json(data);
-    })
-    .catch((error) => next(error));
+authRouter.post("/login", async (request, response, next) => {
+  try {
+    const body = await request.body;
+    const user = await Auth.findOne({ username: body.username });
+
+    if (!user) response.json({ error: "Username Doesn't Exist" });
+
+    if (user) {
+      bcrypt.compare(body.password, user.password).then((match) => {
+        if (!match) response.json({ error: "Wrong Username or Password" });
+
+        if (match) {
+          const accessToken = sign(
+            { username: user.username, id: user._id },
+            config.SECRET_CODE
+          );
+
+          response.json({
+            token: accessToken,
+            username: user.username,
+            id: user._id,
+            usertype: user.usertype,
+          });
+        }
+      });
+    }
+  } catch (err) {
+    next(err);
+  }
 });
 
 module.exports = authRouter;
