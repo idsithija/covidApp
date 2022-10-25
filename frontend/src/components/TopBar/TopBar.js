@@ -1,10 +1,12 @@
 import { faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import ProfilePic from "../../assets/img/pro.png";
+import { MainContext } from "../../context/MainContext";
+import { logout } from "../../context/MainAction";
 
 function TopBar() {
+  const { dispatch } = useContext(MainContext);
   const [openMenu, setOpenMenu] = useState(false);
   const wrapperRef = useRef(null);
   const imgRef = useRef(null);
@@ -47,10 +49,10 @@ function TopBar() {
         <div ref={wrapperRef} className="menu shadow-sm rounded bg-white p-3">
           <ul>
             <li className="d-flex align-items-center">
-              <NavLink to="/">
+              <span className="cp" onClick={() => dispatch(logout())}>
                 <FontAwesomeIcon icon={faSignOut} />
                 <span className="link-text ms-2">Logout</span>
-              </NavLink>
+              </span>
             </li>
           </ul>
         </div>

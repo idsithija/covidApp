@@ -1,5 +1,10 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React, { useContext } from "react";
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
 import AdminDashboard from "../view/Dashboards/AdminDashboard";
 import UserDashboard from "../view/Dashboards/UserDashboard";
 import Filter from "../view/Filter/Filter";
@@ -12,23 +17,113 @@ import Locations from "../view/Locations/Locations";
 import Support from "../view/Support/Support";
 import Disease from "../view/Disease/Disease";
 import UserSettings from "../view/UserSettings/UserSettings";
+import ProtectedLogin from "../helpers/ProtectedLogin";
+import ProtectedRoute from "../helpers/ProtectedRoute";
+import { MainContext } from "../context/MainContext";
+import UserProtectedRoute from "../helpers/UserProtectedRoute";
 
 function RouteGaurd() {
+  const { user } = useContext(MainContext);
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<SignIn />} />
-        <Route path="/register" element={<SignUp />} />
-        <Route path="/dashboard" element={<AdminDashboard />} />
-        <Route path="/dashboard1" element={<UserDashboard />} />
-        <Route path="/status" element={<Status />} />
-        <Route path="/data" element={<Filter />} />
-        <Route path="/locations" element={<Locations />} />
-        <Route path="/disease" element={<Disease />} />
-        <Route path="/settings" element={<AdminSettings />} />
-        <Route path="/ticket" element={<Ticket />} />
-        <Route path="/support" element={<Support />} />
-        <Route path="/details" element={<UserSettings />} />
+        <Route
+          path="/"
+          element={
+            <ProtectedLogin user={user}>
+              <SignIn />
+            </ProtectedLogin>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <ProtectedLogin user={user}>
+              <SignUp />
+            </ProtectedLogin>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute user={user}>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard1"
+          element={
+            <UserProtectedRoute user={user}>
+              <UserDashboard />
+            </UserProtectedRoute>
+          }
+        />
+        <Route
+          path="/status"
+          element={
+            <UserProtectedRoute user={user}>
+              <Status />
+            </UserProtectedRoute>
+          }
+        />
+        <Route
+          path="/data"
+          element={
+            <ProtectedRoute user={user}>
+              <Filter />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/locations"
+          element={
+            <UserProtectedRoute user={user}>
+              <Locations />
+            </UserProtectedRoute>
+          }
+        />
+        <Route
+          path="/disease"
+          element={
+            <ProtectedRoute user={user}>
+              <Disease />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <ProtectedRoute user={user}>
+              <AdminSettings />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/ticket"
+          element={
+            <ProtectedRoute user={user}>
+              <Ticket />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/support"
+          element={
+            <UserProtectedRoute user={user}>
+              <Support />
+            </UserProtectedRoute>
+          }
+        />
+        <Route
+          path="/details"
+          element={
+            <UserProtectedRoute user={user}>
+              <UserSettings />
+            </UserProtectedRoute>
+          }
+        />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
   );

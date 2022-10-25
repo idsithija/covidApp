@@ -29,11 +29,12 @@ authRouter.post("/login", async (request, response, next) => {
     const body = await request.body;
     const user = await Auth.findOne({ username: body.username });
 
-    if (!user) response.json({ error: "Username Doesn't Exist" });
+    if (!user) response.status(401).json({ error: "Username Doesn't Exist" });
 
     if (user) {
       bcrypt.compare(body.password, user.password).then((match) => {
-        if (!match) response.json({ error: "Wrong Username or Password" });
+        if (!match)
+          response.status(401).json({ error: "Wrong Username or Password" });
 
         if (match) {
           const accessToken = sign(

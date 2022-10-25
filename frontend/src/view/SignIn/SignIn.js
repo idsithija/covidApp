@@ -1,14 +1,33 @@
-import { Formik } from "formik";
-import React from "react";
+import { ErrorMessage, Formik } from "formik";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SignInImg from "../../assets/img/login_bg.png";
+import { auth } from "../../context/apiCalls";
+import { MainContext } from "../../context/MainContext";
+import * as Yup from "yup";
 
 function SignIn() {
+  const { dispatch } = useContext(MainContext);
   const Navigate = useNavigate();
 
-  const goDashboard = () => {
-    Navigate("/dashboard");
+  const initalValue = {
+    username: "",
+    password: "",
   };
+
+  /* eslint-disable */
+  // Yup Validation
+  let validationSchema = Yup.object().shape({
+    username: Yup.string().required("Username is required!"),
+    password: Yup.string().required("Password is required!"),
+  });
+
+  function signIn(data) {
+    auth(data, dispatch).then(() => {
+      Navigate("/dashboard");
+    });
+  }
+
   return (
     <div className="vh-100 d-flex">
       <div className="col-8 h-100 main-color login-p-l">
@@ -24,16 +43,27 @@ function SignIn() {
           <h2 className="mb-5 sing-in-right-title fw-bold">
             Sign In to Dashboard
           </h2>
-          <Formik>
+          <Formik
+            initialValues={initalValue}
+            onSubmit={signIn}
+            validationSchema={validationSchema}
+          >
             {(props) => (
-              <form className="w-100">
+              <form className="w-100" onSubmit={props.handleSubmit}>
                 <div className="row">
                   <div className="col-12 mb-4">
-                    <label className="name fw-semibold">Email Address</label>
+                    <label className="name fw-semibold">Username</label>
                     <input
                       className="form-control mt-1"
-                      name="email"
+                      name="username"
                       placeholder="Email Address..."
+                      value={props.values.username}
+                      onChange={props.handleChange}
+                    />
+                    <ErrorMessage
+                      name="username"
+                      component="span"
+                      className="error"
                     />
                   </div>
                   <div className="col-12">
@@ -42,16 +72,19 @@ function SignIn() {
                       className="form-control mt-1"
                       name="password"
                       placeholder="Password..."
+                      value={props.values.password}
+                      onChange={props.handleChange}
+                    />
+                    <ErrorMessage
+                      name="password"
+                      component="span"
+                      className="error"
                     />
                   </div>
                 </div>
                 <div className="row mt-5">
                   <div className="col-12">
-                    <button
-                      type="button"
-                      className="btn btn-primary w-100"
-                      onClick={() => goDashboard()}
-                    >
+                    <button type="submit" className="btn btn-primary w-100">
                       Sign In
                     </button>
                   </div>
