@@ -23,11 +23,19 @@ function SignUp() {
               <form className="w-100">
                 <div className="row">
                   <div className="col-12 mb-4">
-                    <label className="name fw-semibold">Your Name</label>
+                    <label className="name fw-semibold">Full Name</label>
                     <input
                       className="form-control mt-1"
                       name="name"
                       placeholder="Your Name..."
+                    />
+                  </div>
+                  <div className="col-12 mb-4">
+                    <label className="name fw-semibold">Username</label>
+                    <input
+                      className="form-control mt-1"
+                      name="username"
+                      placeholder="Username..."
                     />
                   </div>
                   <div className="col-12 mb-4">

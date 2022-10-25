@@ -1,5 +1,6 @@
 const authRouter = require("express").Router();
 const Auth = require("../models/auth");
+const User = require("../models/user");
 const bcrypt = require("bcrypt");
 const config = require("../utils/config");
 
@@ -15,7 +16,21 @@ authRouter.post("/", async (request, response, next) => {
       usertype: body.usertype,
     });
 
+    const userDetailes = new User({
+      username: body.username,
+      fullname: body.fullname,
+      email: body.email,
+      usertype: body.usertype,
+    });
+
     user
+      .save()
+      .then((data) => {
+        response.json(data);
+      })
+      .catch((error) => next(error));
+
+    userDetailes
       .save()
       .then((data) => {
         response.json(data);

@@ -52,7 +52,7 @@ function RouteGaurd() {
           }
         />
         <Route
-          path="/dashboard1"
+          path="/dashboard-user"
           element={
             <UserProtectedRoute user={user}>
               <UserDashboard />
@@ -93,11 +93,7 @@ function RouteGaurd() {
         />
         <Route
           path="/settings"
-          element={
-            <ProtectedRoute user={user}>
-              <AdminSettings />
-            </ProtectedRoute>
-          }
+          element={user ? <AdminSettings /> : <Navigate to="/" />}
         />
         <Route
           path="/ticket"
@@ -117,11 +113,7 @@ function RouteGaurd() {
         />
         <Route
           path="/details"
-          element={
-            <UserProtectedRoute user={user}>
-              <UserSettings />
-            </UserProtectedRoute>
-          }
+          element={user ? <UserSettings /> : <Navigate to="/" />}
         />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

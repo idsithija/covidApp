@@ -23,27 +23,29 @@ function SideBar() {
         </Link>
       </h1>
       <ul className="nav">
-        <li className="item">
-          <NavLink
-            className="nav-item d-flex align-items-center"
-            to="/dashboard"
-          >
-            <FontAwesomeIcon icon={faHome} width="30" />
-            <span className="link-text">Dashboard</span>
-          </NavLink>
-        </li>
-        {user.usertype !== "ADMIN" ? (
+        {user.usertype !== "USER" ? (
           <li className="item">
             <NavLink
               className="nav-item d-flex align-items-center"
-              to="/dashboard1"
+              to="/dashboard"
             >
               <FontAwesomeIcon icon={faHome} width="30" />
-              <span className="link-text">Dashboard 1</span>
+              <span className="link-text">Dashboard</span>
             </NavLink>
           </li>
         ) : null}
-        {user.usertype !== "ADMIN" ? (
+        {user.usertype === "USER" ? (
+          <li className="item">
+            <NavLink
+              className="nav-item d-flex align-items-center"
+              to="/dashboard-user"
+            >
+              <FontAwesomeIcon icon={faHome} width="30" />
+              <span className="link-text">Dashboard</span>
+            </NavLink>
+          </li>
+        ) : null}
+        {user.usertype === "USER" ? (
           <li className="item">
             <NavLink className="nav-item" to="/status">
               <FontAwesomeIcon icon={faArchive} width="30" />
@@ -51,13 +53,15 @@ function SideBar() {
             </NavLink>
           </li>
         ) : null}
-        <li className="item">
-          <NavLink className="nav-item" to="/data">
-            <FontAwesomeIcon icon={faDatabase} width="30" />
-            <span className="link-text">Data</span>
-          </NavLink>
-        </li>
-        {user.usertype !== "ADMIN" ? (
+        {user.usertype !== "USER" ? (
+          <li className="item">
+            <NavLink className="nav-item" to="/data">
+              <FontAwesomeIcon icon={faDatabase} width="30" />
+              <span className="link-text">Data</span>
+            </NavLink>
+          </li>
+        ) : null}
+        {user.usertype === "USER" ? (
           <li className="item">
             <NavLink className="nav-item" to="/locations">
               <FontAwesomeIcon icon={faLocationArrow} width="30" />
@@ -65,19 +69,23 @@ function SideBar() {
             </NavLink>
           </li>
         ) : null}
-        <li className="item">
-          <NavLink className="nav-item" to="/Disease">
-            <FontAwesomeIcon icon={faListAlt} width="30" />
-            <span className="link-text">Disease</span>
-          </NavLink>
-        </li>
-        <li className="item">
-          <NavLink className="nav-item" to="/ticket">
-            <FontAwesomeIcon icon={faTicket} width="30" />
-            <span className="link-text">Ticket</span>
-          </NavLink>
-        </li>
-        {user.usertype !== "ADMIN" ? (
+        {user.usertype !== "USER" ? (
+          <li className="item">
+            <NavLink className="nav-item" to="/Disease">
+              <FontAwesomeIcon icon={faListAlt} width="30" />
+              <span className="link-text">Disease</span>
+            </NavLink>
+          </li>
+        ) : null}
+        {user.usertype !== "USER" ? (
+          <li className="item">
+            <NavLink className="nav-item" to="/ticket">
+              <FontAwesomeIcon icon={faTicket} width="30" />
+              <span className="link-text">Ticket</span>
+            </NavLink>
+          </li>
+        ) : null}
+        {user.usertype === "USER" ? (
           <li className="item">
             <NavLink className="nav-item" to="/support">
               <FontAwesomeIcon icon={faQuestionCircle} width="30" />
@@ -87,12 +95,6 @@ function SideBar() {
         ) : null}
         <li className="item">
           <NavLink className="nav-item" to="/settings">
-            <FontAwesomeIcon icon={faCog} width="30" />
-            <span className="link-text">Settings</span>
-          </NavLink>
-        </li>
-        <li className="item">
-          <NavLink className="nav-item" to="/details">
             <FontAwesomeIcon icon={faCog} width="30" />
             <span className="link-text">Settings</span>
           </NavLink>
