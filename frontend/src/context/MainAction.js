@@ -14,3 +14,15 @@ export const authFailure = () => ({
 export const logout = () => ({
   type: "LOGOUT",
 });
+
+export const registerStart = () => ({
+  type: "REGISTER_START",
+});
+
+export const registerSuccess = () => ({
+  type: "REGISTER_SUCCESS",
+});
+
+export const registerFailure = () => ({
+  type: "REGISTER_FAILURE",
+});

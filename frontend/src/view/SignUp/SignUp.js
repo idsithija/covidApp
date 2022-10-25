@@ -1,8 +1,42 @@
-import { Formik } from "formik";
-import React from "react";
+import { ErrorMessage, Formik } from "formik";
+import React, { useContext } from "react";
 import SignUpImg from "../../assets/img/reg-bg.png";
+import * as Yup from "yup";
+import { MainContext } from "../../context/MainContext";
+import { register } from "../../context/apiCalls";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
+  const { dispatch } = useContext(MainContext);
+  const Navigate = useNavigate();
+  const initalValue = {
+    name: "",
+    username: "",
+    email: "",
+    password: "",
+    confirm_password: "",
+  };
+
+  /* eslint-disable */
+  // Yup Validation
+  let validationSchema = Yup.object().shape({
+    name: Yup.string().required("Full Name is required!"),
+    username: Yup.string().required("Username is required!"),
+    email: Yup.string().required("Email is required!"),
+    password: Yup.string().required("Password is required!"),
+    confirm_password: Yup.string().required("Confirm password is required!"),
+  });
+
+  function signUp(data) {
+    const values = {
+      ...data,
+      usertype: "USER",
+    };
+    register(values, dispatch).then(() => {
+      Navigate("/");
+    });
+  }
+
   return (
     <div className="vh-100 d-flex">
       <div className="col-8 h-100 main-color login-p-l">
@@ -18,9 +52,13 @@ function SignUp() {
           <h2 className="mb-5 sing-in-right-title fw-bold">
             Sign Up to Register
           </h2>
-          <Formik>
+          <Formik
+            initialValues={initalValue}
+            onSubmit={signUp}
+            validationSchema={validationSchema}
+          >
             {(props) => (
-              <form className="w-100">
+              <form className="w-100" onSubmit={props.handleSubmit}>
                 <div className="row">
                   <div className="col-12 mb-4">
                     <label className="name fw-semibold">Full Name</label>
@@ -28,6 +66,13 @@ function SignUp() {
                       className="form-control mt-1"
                       name="name"
                       placeholder="Your Name..."
+                      value={props.values.name}
+                      onChange={props.handleChange}
+                    />
+                    <ErrorMessage
+                      name="name"
+                      component="span"
+                      className="error"
                     />
                   </div>
                   <div className="col-12 mb-4">
@@ -36,6 +81,13 @@ function SignUp() {
                       className="form-control mt-1"
                       name="username"
                       placeholder="Username..."
+                      value={props.values.username}
+                      onChange={props.handleChange}
+                    />
+                    <ErrorMessage
+                      name="username"
+                      component="span"
+                      className="error"
                     />
                   </div>
                   <div className="col-12 mb-4">
@@ -44,6 +96,13 @@ function SignUp() {
                       className="form-control mt-1"
                       name="email"
                       placeholder="Email address..."
+                      value={props.values.email}
+                      onChange={props.handleChange}
+                    />
+                    <ErrorMessage
+                      name="email"
+                      component="span"
+                      className="error"
                     />
                   </div>
                   <div className="col-12 mb-4">
@@ -52,6 +111,13 @@ function SignUp() {
                       className="form-control mt-1"
                       name="password"
                       placeholder="Password..."
+                      value={props.values.password}
+                      onChange={props.handleChange}
+                    />
+                    <ErrorMessage
+                      name="password"
+                      component="span"
+                      className="error"
                     />
                   </div>
                   <div className="col-12">
@@ -60,12 +126,19 @@ function SignUp() {
                       className="form-control mt-1"
                       name="confirm_password"
                       placeholder="Confirm Password..."
+                      value={props.values.confirm_password}
+                      onChange={props.handleChange}
+                    />
+                    <ErrorMessage
+                      name="confirm_password"
+                      component="span"
+                      className="error"
                     />
                   </div>
                 </div>
                 <div className="row mt-5">
                   <div className="col-12">
-                    <button type="button" className="btn btn-primary w-100">
+                    <button type="submit" className="btn btn-primary w-100">
                       Sign Up
                     </button>
                   </div>
