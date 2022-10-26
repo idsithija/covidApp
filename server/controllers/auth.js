@@ -41,7 +41,7 @@ authRouter.post("/", async (request, response, next) => {
 
 authRouter.post("/login", async (request, response, next) => {
   try {
-    const body = await request.body;
+    const body = request.body;
     const user = await Auth.findOne({ username: body.username });
 
     if (!user) response.status(401).json({ error: "Username Doesn't Exist" });

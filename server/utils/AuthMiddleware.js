@@ -2,7 +2,7 @@ const { verify } = require("jsonwebtoken");
 const config = require("./config");
 
 const validateToken = (req, res, next) => {
-  const accessToken = req.header("token");
+  const accessToken = req.header("Bearer");
 
   if (!accessToken) return res.json({ error: "User not logged in" });
 
@@ -16,3 +16,5 @@ const validateToken = (req, res, next) => {
     return res.json({ error: err });
   }
 };
+
+module.exports = { validateToken };

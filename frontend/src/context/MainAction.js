@@ -26,3 +26,15 @@ export const registerSuccess = () => ({
 export const registerFailure = () => ({
   type: "REGISTER_FAILURE",
 });
+
+export const settingsStart = () => ({
+  type: "SETTINGS_START",
+});
+
+export const settingsSuccess = () => ({
+  type: "SETTINGS_SUCCESS",
+});
+
+export const settingsFailure = () => ({
+  type: "SETTINGS_FAILURE",
+});

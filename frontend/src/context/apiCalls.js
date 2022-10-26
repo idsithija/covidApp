@@ -6,6 +6,9 @@ import {
   registerFailure,
   registerStart,
   registerSuccess,
+  settingsFailure,
+  settingsStart,
+  settingsSuccess,
 } from "./MainAction";
 
 export const auth = async (data, dispatch) => {
@@ -35,6 +38,22 @@ export const register = async (data, dispatch) => {
       })
       .catch((error) => {
         dispatch(registerFailure());
+        reject(error);
+      });
+  });
+};
+
+export const settings = async (data, dispatch) => {
+  dispatch(settingsStart());
+  return await new Promise((resolve, reject) => {
+    axios
+      .post("http://localhost:3001/api/user/settings", data)
+      .then((response) => {
+        dispatch(settingsSuccess(response));
+        resolve(response);
+      })
+      .catch((error) => {
+        dispatch(settingsFailure(error));
         reject(error);
       });
   });

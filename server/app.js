@@ -6,6 +6,7 @@ const logger = require("./utils/logger");
 const mongoose = require("mongoose");
 const middleware = require("./utils/midddleware");
 const authRouter = require("./controllers/auth");
+const userRouter = require("./controllers/user");
 
 mongoose
   .connect(config.MONGOOSE_URL)
@@ -22,5 +23,6 @@ app.use(express.static("build"));
 app.use(middleware.requestLogger);
 
 app.use("/api/auth", authRouter);
+app.use("/api/user", userRouter);
 
 module.exports = app;

@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SideBar from "../../components/SideBar/SideBar";
 import TopBar from "../../components/TopBar/TopBar";
+import { settings } from "../../context/apiCalls";
+import { MainContext } from "../../context/MainContext";
 
 function UserDashboard() {
   const Navigate = useNavigate();
+  const { user, dispatch } = useContext(MainContext);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  useEffect(() => {
+    settings({ username: user.username }, dispatch).catch((error) => {
+      setErrorMsg(error.response.data);
+    });
+  }, [dispatch, user.username]);
+
   const clickSetting = () => {
     Navigate("/details");
   };
@@ -16,15 +27,15 @@ function UserDashboard() {
         <div className="layout-container">
           <div className="shadow-sm p-3 mb-5 bg-white rounded">
             <div className="welcome-title">
-              Welcome to Supun...! See the latest updates.
+              Welcome to {user.username}...! See the latest updates.
             </div>
           </div>
           <div className="d-flex align-items-center">
-            <div className="shadow-sm p-3 bg-white rounded col-9">
-              <div className="account-warning">
-                Please add the Account settings.
+            {errorMsg !== "" ? (
+              <div className="shadow-sm p-3 bg-white rounded col-9">
+                <div className="account-warning">{errorMsg}.</div>
               </div>
-            </div>
+            ) : null}
             <div className="col-3">
               <button
                 type="button"

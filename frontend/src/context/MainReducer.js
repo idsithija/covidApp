@@ -43,6 +43,24 @@ const AuthReducer = (state, action) => {
         isFetching: false,
         error: true,
       };
+    case "SETTINGS_START":
+      return {
+        ...state,
+        isFetching: true,
+        error: false,
+      };
+    case "SETTINGS_SUCCESS":
+      return {
+        ...state,
+        isFetching: false,
+        error: false,
+      };
+    case "SETTINGS_FAILIURE":
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+      };
     default:
       return { ...state };
   }

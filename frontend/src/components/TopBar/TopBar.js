@@ -6,7 +6,7 @@ import { MainContext } from "../../context/MainContext";
 import { logout } from "../../context/MainAction";
 
 function TopBar() {
-  const { dispatch } = useContext(MainContext);
+  const { user, dispatch } = useContext(MainContext);
   const [openMenu, setOpenMenu] = useState(false);
   const wrapperRef = useRef(null);
   const imgRef = useRef(null);
@@ -34,8 +34,8 @@ function TopBar() {
     <div className="top-bar d-flex justify-content-end">
       <div className="d-flex align-items-center">
         <div className="d-flex flex-column align-items-end me-4">
-          <span className="">supunsatharasinha@gmail.com</span>
-          <span className="gray-color">ID:1234567</span>
+          <span className="">{user.username}</span>
+          <span className="gray-color">ID:{user.id}</span>
         </div>
         <img
           ref={imgRef}

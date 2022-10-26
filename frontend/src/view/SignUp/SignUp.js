@@ -10,7 +10,7 @@ function SignUp() {
   const { dispatch } = useContext(MainContext);
   const Navigate = useNavigate();
   const initalValue = {
-    name: "",
+    fullname: "",
     username: "",
     email: "",
     password: "",
@@ -20,7 +20,7 @@ function SignUp() {
   /* eslint-disable */
   // Yup Validation
   let validationSchema = Yup.object().shape({
-    name: Yup.string().required("Full Name is required!"),
+    fullname: Yup.string().required("Full Name is required!"),
     username: Yup.string().required("Username is required!"),
     email: Yup.string().required("Email is required!"),
     password: Yup.string().required("Password is required!"),
@@ -64,13 +64,13 @@ function SignUp() {
                     <label className="name fw-semibold">Full Name</label>
                     <input
                       className="form-control mt-1"
-                      name="name"
+                      name="fullname"
                       placeholder="Your Name..."
-                      value={props.values.name}
+                      value={props.values.fullname}
                       onChange={props.handleChange}
                     />
                     <ErrorMessage
-                      name="name"
+                      name="fullname"
                       component="span"
                       className="error"
                     />
@@ -111,6 +111,7 @@ function SignUp() {
                       className="form-control mt-1"
                       name="password"
                       placeholder="Password..."
+                      type="password"
                       value={props.values.password}
                       onChange={props.handleChange}
                     />
@@ -126,6 +127,7 @@ function SignUp() {
                       className="form-control mt-1"
                       name="confirm_password"
                       placeholder="Confirm Password..."
+                      type="password"
                       value={props.values.confirm_password}
                       onChange={props.handleChange}
                     />
