@@ -11,6 +11,13 @@ const authSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    fullname: {
+      type: String,
+    },
+    email: {
+      type: String,
+      unique: true,
+    },
     usertype: String,
   },
   { timestamps: true }

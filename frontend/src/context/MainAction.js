@@ -38,3 +38,15 @@ export const settingsSuccess = () => ({
 export const settingsFailure = () => ({
   type: "SETTINGS_FAILURE",
 });
+
+export const getSettingsStart = () => ({
+  type: "GET_SETTINGS_START",
+});
+
+export const getSettingsSuccess = () => ({
+  type: "GET_SETTINGS_SUCCESS",
+});
+
+export const getSettingsFailure = () => ({
+  type: "GET_SETTINGS_FAILURE",
+});

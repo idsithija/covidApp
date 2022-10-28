@@ -56,7 +56,7 @@ function SignIn() {
                     <input
                       className="form-control mt-1"
                       name="username"
-                      placeholder="Email Address..."
+                      placeholder="Username..."
                       value={props.values.username}
                       onChange={props.handleChange}
                     />

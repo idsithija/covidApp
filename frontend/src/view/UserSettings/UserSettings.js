@@ -1,15 +1,20 @@
 import { ErrorMessage, Formik } from "formik";
-import React from "react";
+import React, { useContext } from "react";
 import SideBar from "../../components/SideBar/SideBar";
 import TopBar from "../../components/TopBar/TopBar";
 import * as Yup from "yup";
+import { MainContext } from "../../context/MainContext";
+import { addDetailes } from "../../context/apiCalls";
+import { useNavigate } from "react-router-dom";
 
 function UserSettings() {
+  const { user, dispatch } = useContext(MainContext);
+  const Navigate = useNavigate();
   const initialValues = {
     nic: "",
     dob: "",
     gender: "",
-    bloog_group: "",
+    bloodgroup: "",
     addressline1: "",
     addressline2: "",
     district: "",
@@ -25,7 +30,7 @@ function UserSettings() {
     nic: Yup.string().required("Nic is required!"),
     dob: Yup.string().required("Date of Brith is required!"),
     gender: Yup.string().required("Gender is required!"),
-    bloog_group: Yup.string().required("Blood Group is required!"),
+    bloodgroup: Yup.string().required("Blood Group is required!"),
     addressline1: Yup.string().required("Address Line 01 is required!"),
     addressline2: Yup.string().required("Address Line 02 required!"),
     district: Yup.string().required("Distric is required!"),
@@ -35,8 +40,11 @@ function UserSettings() {
     mobilephone: Yup.string().required("Mobile phone is required!"),
   });
 
-  function addDetailes(data) {
-    console.log(data);
+  function addDetailesForm(data) {
+    var dataNew = { ...data, userid: user.id };
+    addDetailes(user.id, dataNew, dispatch).then(() => {
+      Navigate("/settings");
+    });
   }
 
   return (
@@ -51,7 +59,7 @@ function UserSettings() {
               <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
-                onSubmit={addDetailes}
+                onSubmit={addDetailesForm}
               >
                 {(props) => (
                   <form onSubmit={props.handleSubmit}>
@@ -107,13 +115,13 @@ function UserSettings() {
                         <label className="name fw-semibold">Blood Group</label>
                         <input
                           className="form-control mt-1"
-                          name="bloog_group"
+                          name="bloodgroup"
                           placeholder="Blood Group..."
-                          value={props.values.bloog_group}
+                          value={props.values.bloodgroup}
                           onChange={props.handleChange}
                         />
                         <ErrorMessage
-                          name="bloog_group"
+                          name="bloodgroup"
                           component="span"
                           className="error"
                         />

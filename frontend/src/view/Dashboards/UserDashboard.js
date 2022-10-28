@@ -11,10 +11,10 @@ function UserDashboard() {
   const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
-    settings({ username: user.username }, dispatch).catch((error) => {
+    settings({ userid: user.id }, dispatch).catch((error) => {
       setErrorMsg(error.response.data);
     });
-  }, [dispatch, user.username]);
+  }, [dispatch, user.id]);
 
   const clickSetting = () => {
     Navigate("/details");
@@ -31,11 +31,13 @@ function UserDashboard() {
             </div>
           </div>
           <div className="d-flex align-items-center">
-            {errorMsg !== "" ? (
-              <div className="shadow-sm p-3 bg-white rounded col-9">
-                <div className="account-warning">{errorMsg}.</div>
-              </div>
-            ) : null}
+            <div className="col-9">
+              {errorMsg !== "" ? (
+                <div className="shadow-sm p-3 bg-white rounded">
+                  <div className="account-warning">{errorMsg}.</div>
+                </div>
+              ) : null}
+            </div>
             <div className="col-3">
               <button
                 type="button"

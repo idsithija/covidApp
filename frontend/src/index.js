@@ -6,11 +6,9 @@ import "./scss/main.scss";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <MainContextProvider>
-      <App />
-    </MainContextProvider>
-  </React.StrictMode>
+  <MainContextProvider>
+    <App />
+  </MainContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
