@@ -41,7 +41,12 @@ function UserSettings() {
   });
 
   function addDetailesForm(data) {
-    var dataNew = { ...data, userid: user.id };
+    var dataNew = {
+      ...data,
+      userid: user.id,
+      usertype: user.usertype,
+      fullname: user.fullname,
+    };
     addDetailes(user.id, dataNew, dispatch).then(() => {
       Navigate("/settings");
     });

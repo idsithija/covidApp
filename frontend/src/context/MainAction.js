@@ -74,3 +74,39 @@ export const getDiseasesSuccess = () => ({
 export const getDiseasesFailure = () => ({
   type: "GET_DISEASE_FAILURE",
 });
+
+export const addSupportStart = () => ({
+  type: "ADD_SUPPORT_STRAT",
+});
+
+export const addSupportSuccess = () => ({
+  type: "ADD_SUPPORT_SUCCESS",
+});
+
+export const addSupportFailure = () => ({
+  type: "ADD_SUPPORT_FAILURE",
+});
+
+export const getSupportsStart = () => ({
+  type: "GET_SUPPORTS_STRAT",
+});
+
+export const getSupportsSuccess = () => ({
+  type: "GET_SUPPORTS_SUCCESS",
+});
+
+export const getSupportsFailure = () => ({
+  type: "GET_SUPPORTS_FAILURE",
+});
+
+export const getUsersStart = () => ({
+  type: "GET_USERS_STRAT",
+});
+
+export const getUsersSuccess = () => ({
+  type: "GET_USERS_SUCCESS",
+});
+
+export const getUsersFailure = () => ({
+  type: "GET_USERS_FAILURE",
+});

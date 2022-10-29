@@ -40,6 +40,9 @@ const userSchema = new mongoose.Schema(
     homephone: {
       type: String,
     },
+    usertype: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

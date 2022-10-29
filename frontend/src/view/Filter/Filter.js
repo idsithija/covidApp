@@ -1,34 +1,32 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import SideBar from "../../components/SideBar/SideBar";
 import TopBar from "../../components/TopBar/TopBar";
 import DataTable from "react-data-table-component";
+import { MainContext } from "../../context/MainContext";
+import { getUsers } from "../../context/apiCalls";
 
 function Filter() {
+  const { dispatch } = useContext(MainContext);
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    getUsers(dispatch).then((response) => {
+      setUser(response.data);
+    });
+  }, [dispatch]);
+
   const columns = [
     {
-      name: "Patient name",
-      selector: (row) => row.title,
+      name: "Patient Id",
+      selector: (row) => row.userid,
     },
     {
       name: "Location",
-      selector: (row) => row.year,
+      selector: (row) => row.city,
     },
     {
-      name: "Address",
-      selector: (row) => row.id,
-    },
-  ];
-
-  const data = [
-    {
-      id: 1,
-      title: "Beetlejuice",
-      year: "1988",
-    },
-    {
-      id: 2,
-      title: "Ghostbusters",
-      year: "1984",
+      name: "District",
+      selector: (row) => row.district,
     },
   ];
 
@@ -84,7 +82,7 @@ function Filter() {
                 </button>
               </div>
             </div>
-            <DataTable columns={columns} data={data} />
+            <DataTable columns={columns} data={user} />
           </div>
         </div>
       </div>

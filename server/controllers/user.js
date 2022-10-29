@@ -51,6 +51,7 @@ userRouter.post("/adddetailes/:id", async (request, response, next) => {
     nic: body.nic,
     province: body.province,
     userid: body.userid,
+    usertype: body.usertype,
   });
 
   user
@@ -59,6 +60,16 @@ userRouter.post("/adddetailes/:id", async (request, response, next) => {
       response.json(data);
     })
     .catch((error) => next(error));
+});
+
+userRouter.get("/users", async (request, response, next) => {
+  await User.find({ usertype: "USER" })
+    .then((supports) => {
+      response.json(supports);
+    })
+    .catch((err) => {
+      next(err);
+    });
 });
 
 module.exports = userRouter;

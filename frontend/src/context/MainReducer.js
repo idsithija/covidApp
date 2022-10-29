@@ -97,6 +97,60 @@ const AuthReducer = (state, action) => {
         isFetching: false,
         error: true,
       };
+    case "ADD_SUPPORT_STRAT":
+      return {
+        ...state,
+        isFetching: true,
+        error: true,
+      };
+    case "ADD_SUPPORT_SUCCESS":
+      return {
+        ...state,
+        isFetching: false,
+        error: false,
+      };
+    case "ADD_SUPPORT_FAILURE":
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+      };
+    case "GET_SUPPORTS_STRAT":
+      return {
+        ...state,
+        isFetching: true,
+        error: true,
+      };
+    case "GET_SUPPORTS_SUCCESS":
+      return {
+        ...state,
+        isFetching: false,
+        error: false,
+      };
+    case "GET_SUPPORTS_FAILURE":
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+      };
+    case "GET_USERS_STRAT":
+      return {
+        ...state,
+        isFetching: true,
+        error: true,
+      };
+    case "GET_USERS_SUCCESS":
+      return {
+        ...state,
+        isFetching: false,
+        error: false,
+      };
+    case "GET_USERS_FAILURE":
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+      };
     default:
       return { ...state };
   }

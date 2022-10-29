@@ -17,12 +17,10 @@ function Disease() {
     });
   }, [dispatch]);
 
-  console.log(diseasesList);
-
   const columns = [
     {
       name: "Disease Name",
-      selector: (row) => row.title,
+      selector: (row) => row.diseasename,
     },
     {
       name: "Count",
@@ -31,21 +29,6 @@ function Disease() {
     {
       name: "Location",
       selector: (row) => row.location,
-    },
-  ];
-
-  const data = [
-    {
-      id: 1,
-      title: "Covid disease",
-      count: "100000",
-      location: "China",
-    },
-    {
-      id: 2,
-      title: "Disease 01",
-      count: "600000",
-      location: "India",
     },
   ];
 
@@ -76,7 +59,7 @@ function Disease() {
         <div className="layout-container">
           <div className="shadow-sm p-3 mb-5 bg-white rounded filter-page">
             <h1 className="title">Disease</h1>
-            <DataTable className="mt-4" columns={columns} data={data} />
+            <DataTable className="mt-4" columns={columns} data={diseasesList} />
           </div>
           <div className="shadow-sm p-3 bg-white rounded filter-page">
             <h1 className="title">Add Disease</h1>

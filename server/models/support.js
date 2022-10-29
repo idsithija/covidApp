@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 
-const diseaseSchema = new mongoose.Schema({
-  diseasename: {
+const supportSchema = new mongoose.Schema({
+  name: {
     type: String,
   },
-  count: {
+  email: {
     type: String,
   },
-  location: {
+  details: {
     type: String,
   },
   userid: {
@@ -15,7 +15,7 @@ const diseaseSchema = new mongoose.Schema({
   },
 });
 
-diseaseSchema.set("toJSON", {
+supportSchema.set("toJSON", {
   transform: (document, returnedObject) => {
     returnedObject.id = returnedObject._id.toString();
     delete returnedObject._id;
@@ -23,4 +23,4 @@ diseaseSchema.set("toJSON", {
   },
 });
 
-module.exports = mongoose.model("Disease", diseaseSchema);
+module.exports = mongoose.model("Support", supportSchema);

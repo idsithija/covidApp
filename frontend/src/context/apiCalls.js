@@ -3,6 +3,9 @@ import {
   adddiseaseFailure,
   adddiseaseStart,
   adddiseaseSuccess,
+  addSupportFailure,
+  addSupportStart,
+  addSupportSuccess,
   authFailure,
   authStart,
   authSuccess,
@@ -12,6 +15,12 @@ import {
   getSettingsFailure,
   getSettingsStart,
   getSettingsSuccess,
+  getSupportsFailure,
+  getSupportsStart,
+  getSupportsSuccess,
+  getUsersFailure,
+  getUsersStart,
+  getUsersSuccess,
   registerFailure,
   registerStart,
   registerSuccess,
@@ -127,6 +136,54 @@ export const getDiseases = async (dispatch) => {
       })
       .catch((error) => {
         dispatch(getDiseasesFailure(error));
+        reject(error);
+      });
+  });
+};
+
+export const addSupport = async (data, dispatch) => {
+  dispatch(addSupportStart());
+  return await new Promise((resolve, reject) => {
+    axios
+      .post(`http://localhost:3001/api/support`, data)
+      .then((response) => {
+        dispatch(addSupportSuccess(response));
+        resolve(response);
+      })
+      .catch((error) => {
+        dispatch(addSupportFailure(error));
+        reject(error);
+      });
+  });
+};
+
+export const getSupports = async (dispatch) => {
+  dispatch(getSupportsStart());
+  return await new Promise((resolve, reject) => {
+    axios
+      .get(`http://localhost:3001/api/support/getSupport`)
+      .then((response) => {
+        dispatch(getSupportsSuccess(response));
+        resolve(response);
+      })
+      .catch((error) => {
+        dispatch(getSupportsFailure(error));
+        reject(error);
+      });
+  });
+};
+
+export const getUsers = async (dispatch) => {
+  dispatch(getUsersStart());
+  return await new Promise((resolve, reject) => {
+    axios
+      .get(`http://localhost:3001/api/user/users`)
+      .then((response) => {
+        dispatch(getUsersSuccess(response));
+        resolve(response);
+      })
+      .catch((error) => {
+        dispatch(getUsersFailure(error));
         reject(error);
       });
   });
