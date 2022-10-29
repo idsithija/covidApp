@@ -1,12 +1,12 @@
 const userRouter = require("express").Router();
 const Auth = require("../models/auth");
 const User = require("../models/user");
-const { validateToken } = require("../utils/AuthMiddleware");
 
 userRouter.post("/settings", async (request, response, next) => {
   try {
     const body = request.body;
     const user = await User.findOne({ userid: body.userid });
+
     if (user === null) {
       response.status(301).json("Please fill other the Settigs");
     } else {
@@ -36,11 +36,24 @@ userRouter.post("/getSettings", async (request, response, next) => {
 });
 
 userRouter.post("/adddetailes/:id", async (request, response, next) => {
-  const body = request.body;
+  const body = await request.body;
 
-  await new User({
-    ...body,
-  })
+  const user = new User({
+    addressline1: body.addressline1,
+    addressline2: body.addressline2,
+    bloodgroup: body.bloodgroup,
+    city: body.city,
+    district: body.district,
+    dob: body.dob,
+    gender: body.gender,
+    homephone: body.homephone,
+    mobilephone: body.mobilephone,
+    nic: body.nic,
+    province: body.province,
+    userid: body.userid,
+  });
+
+  user
     .save()
     .then((data) => {
       response.json(data);

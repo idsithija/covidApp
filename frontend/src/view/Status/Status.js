@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import DataTable from "react-data-table-component";
 import SideBar from "../../components/SideBar/SideBar";
 import TopBar from "../../components/TopBar/TopBar";
+import { MainContext } from "../../context/MainContext";
 
 function Status() {
+  const { user } = useContext(MainContext);
   const columns = [
     {
       name: "Vaccine Name",
@@ -41,7 +43,7 @@ function Status() {
           <div className="shadow-sm p-3 mb-5 bg-white rounded filter-page">
             <h1 className="title">Locations</h1>
             <div className="welcome-title title-color mt-4">
-              Current Status of Supun...
+              Current Status of {user.username}...
             </div>
             <div className="mt-3">
               You need to vaccinete 3rd dose at 2023/05/26.

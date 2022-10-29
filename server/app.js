@@ -7,6 +7,8 @@ const mongoose = require("mongoose");
 const middleware = require("./utils/midddleware");
 const authRouter = require("./controllers/auth");
 const userRouter = require("./controllers/user");
+const vaccineRouter = require("./controllers/vaccine");
+const diseaseRouter = require("./controllers/disease");
 
 mongoose
   .connect(config.MONGOOSE_URL)
@@ -24,5 +26,7 @@ app.use(middleware.requestLogger);
 
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
+app.use("/api/vaccine", vaccineRouter);
+app.use("/api/disease", diseaseRouter);
 
 module.exports = app;

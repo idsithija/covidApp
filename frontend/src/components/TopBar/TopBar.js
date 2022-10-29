@@ -35,7 +35,7 @@ function TopBar() {
       <div className="d-flex align-items-center">
         <div className="d-flex flex-column align-items-end me-4">
           <span className="">{user.username}</span>
-          <span className="gray-color">ID:{user.id}</span>
+          <span className="gray-color">ID: {user.id}</span>
         </div>
         <img
           ref={imgRef}

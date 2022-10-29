@@ -4,6 +4,7 @@ const userSchema = new mongoose.Schema(
   {
     userid: {
       type: String,
+      required: true,
       unique: true,
     },
     dob: {

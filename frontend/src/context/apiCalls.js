@@ -1,8 +1,14 @@
 import axios from "axios";
 import {
+  adddiseaseFailure,
+  adddiseaseStart,
+  adddiseaseSuccess,
   authFailure,
   authStart,
   authSuccess,
+  getDiseasesFailure,
+  getDiseasesStart,
+  getDiseasesSuccess,
   getSettingsFailure,
   getSettingsStart,
   getSettingsSuccess,
@@ -89,6 +95,38 @@ export const getSettings = async (id, dispatch) => {
       })
       .catch((error) => {
         dispatch(getSettingsFailure(error));
+        reject(error);
+      });
+  });
+};
+
+export const addDisease = async (data, dispatch) => {
+  dispatch(adddiseaseStart());
+  return await new Promise((resolve, reject) => {
+    axios
+      .post(`http://localhost:3001/api/disease`, data)
+      .then((response) => {
+        dispatch(adddiseaseSuccess(response));
+        resolve(response);
+      })
+      .catch((error) => {
+        dispatch(adddiseaseFailure(error));
+        reject(error);
+      });
+  });
+};
+
+export const getDiseases = async (dispatch) => {
+  dispatch(getDiseasesStart());
+  return await new Promise((resolve, reject) => {
+    axios
+      .get(`http://localhost:3001/api/disease/getDisease`)
+      .then((response) => {
+        dispatch(getDiseasesSuccess(response));
+        resolve(response);
+      })
+      .catch((error) => {
+        dispatch(getDiseasesFailure(error));
         reject(error);
       });
   });

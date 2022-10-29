@@ -50,3 +50,27 @@ export const getSettingsSuccess = () => ({
 export const getSettingsFailure = () => ({
   type: "GET_SETTINGS_FAILURE",
 });
+
+export const adddiseaseStart = () => ({
+  type: "ADD_DISEASE_START",
+});
+
+export const adddiseaseSuccess = () => ({
+  type: "ADD_DISEASE_SUCCESS",
+});
+
+export const adddiseaseFailure = () => ({
+  type: "ADD_DISEASE_FAILURE",
+});
+
+export const getDiseasesStart = () => ({
+  type: "GET_DISEASE_FAILURE",
+});
+
+export const getDiseasesSuccess = () => ({
+  type: "GET_DISEASE_FAILURE",
+});
+
+export const getDiseasesFailure = () => ({
+  type: "GET_DISEASE_FAILURE",
+});

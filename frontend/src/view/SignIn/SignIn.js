@@ -71,6 +71,7 @@ function SignIn() {
                     <input
                       className="form-control mt-1"
                       name="password"
+                      type="password"
                       placeholder="Password..."
                       value={props.values.password}
                       onChange={props.handleChange}
