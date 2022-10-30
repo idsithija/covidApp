@@ -43,6 +43,15 @@ const userSchema = new mongoose.Schema(
     usertype: {
       type: String,
     },
+    fullname: {
+      type: String,
+    },
+    username: {
+      type: String,
+    },
+    age: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

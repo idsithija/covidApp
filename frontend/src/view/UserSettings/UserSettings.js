@@ -22,6 +22,7 @@ function UserSettings() {
     province: "",
     homephone: "",
     mobilephone: "",
+    age: "",
   };
 
   /* eslint-disable */
@@ -38,6 +39,7 @@ function UserSettings() {
     province: Yup.string().required("Province is required!"),
     homephone: Yup.string().required("Home phone is required!"),
     mobilephone: Yup.string().required("Mobile phone is required!"),
+    age: Yup.string().required("Age is required!"),
   });
 
   function addDetailesForm(data) {
@@ -97,6 +99,22 @@ function UserSettings() {
                         />
                         <ErrorMessage
                           name="dob"
+                          component="span"
+                          className="error"
+                        />
+                      </div>
+                      <div className="col-4 mb-4">
+                        <label className="name fw-semibold">Age</label>
+                        <input
+                          className="form-control mt-1"
+                          name="age"
+                          type="number"
+                          placeholder="Age..."
+                          value={props.values.age}
+                          onChange={props.handleChange}
+                        />
+                        <ErrorMessage
+                          name="age"
                           component="span"
                           className="error"
                         />

@@ -38,6 +38,8 @@ userRouter.post("/getSettings", async (request, response, next) => {
 userRouter.post("/adddetailes/:id", async (request, response, next) => {
   const body = await request.body;
 
+  const auth = await Auth.findOne({ _id: body.userid });
+
   const user = new User({
     addressline1: body.addressline1,
     addressline2: body.addressline2,
@@ -52,6 +54,9 @@ userRouter.post("/adddetailes/:id", async (request, response, next) => {
     province: body.province,
     userid: body.userid,
     usertype: body.usertype,
+    fullname: auth.fullname,
+    username: auth.username,
+    age: body.age,
   });
 
   user
