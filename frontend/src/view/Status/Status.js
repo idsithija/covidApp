@@ -46,11 +46,16 @@ function Status() {
               Current Status of {user.username}...
             </div>
             <div className="mt-3">
-              You need to vaccinete {vaccineList.length + 1} dose at{" "}
-              {vaccineList[vaccineList.length - 1] !== undefined
+              {vaccineList.length === 0
+                ? "You need to vaccinete 1 dose."
+                : "You need to vaccinete" +
+                    vaccineList.length +
+                    1 +
+                    "dose at" +
+                    vaccineList[vaccineList.length - 1] !==
+                  undefined
                 ? vaccineList[vaccineList.length - 1].expireDate
                 : null}
-              .
             </div>
             <DataTable className="mt-4" columns={columns} data={vaccineList} />
           </div>
@@ -58,26 +63,43 @@ function Status() {
             <ul className="mt-5 mb-5 row">
               <li className="mb-3 col-6">
                 Full Name :
-                <span className="title-color ms-4">{userData.fullname}</span>
+                {userData !== null ? (
+                  <span className="title-color ms-4">{userData.fullname}</span>
+                ) : null}
               </li>
               <li className="mb-3 col-6">
                 Date of Birth :
-                <span className="title-color ms-4">{userData.dob}</span>
+                {userData !== null ? (
+                  <span className="title-color ms-4">{userData.dob}</span>
+                ) : null}
               </li>
               <li className="mb-3 col-6">
-                NIC :<span className="title-color ms-4">{userData.nic}</span>
+                NIC :
+                {userData !== null ? (
+                  <span className="title-color ms-4">{userData.nic}</span>
+                ) : null}
               </li>
               <li className="mb-3 col-6">
                 Gender :
-                <span className="title-color ms-4">{userData.gender}</span>
+                {userData !== null ? (
+                  <span className="title-color ms-4">{userData.gender}</span>
+                ) : null}
               </li>
               <li className="col-6">
                 Blood Group :
-                <span className="title-color ms-4">{userData.bloodgroup}</span>
+                {userData !== null ? (
+                  <span className="title-color ms-4">
+                    {userData.bloodgroup}
+                  </span>
+                ) : null}
               </li>
               <li className="col-6">
                 Phone Number :
-                <span className="title-color ms-4">{userData.mobilephone}</span>
+                {userData !== null ? (
+                  <span className="title-color ms-4">
+                    {userData.mobilephone}
+                  </span>
+                ) : null}
               </li>
             </ul>
           </div>

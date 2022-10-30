@@ -30,6 +30,10 @@ userRouter.post("/getSettings", async (request, response, next) => {
         fullname: auth.fullname,
       });
     }
+
+    if (user === null) {
+      response.status(500).json("fail");
+    }
   } catch (err) {
     next(err);
   }
