@@ -8,13 +8,13 @@ const vaccineSchema = new mongoose.Schema(
     vaccinename: {
       type: String,
     },
-    vaccinateddate: {
+    vaccinedate: {
       type: String,
     },
     expireDate: {
       type: String,
     },
-    doslevel: {
+    vaccinedose: {
       type: String,
     },
   },

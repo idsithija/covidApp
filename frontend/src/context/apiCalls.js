@@ -6,6 +6,9 @@ import {
   addSupportFailure,
   addSupportStart,
   addSupportSuccess,
+  addVaccineFailure,
+  addVaccineStart,
+  addVaccineSuccess,
   authFailure,
   authStart,
   authSuccess,
@@ -21,6 +24,9 @@ import {
   getUsersFailure,
   getUsersStart,
   getUsersSuccess,
+  getVaccinesFailure,
+  getVaccinesStart,
+  getVaccinesSuccess,
   registerFailure,
   registerStart,
   registerSuccess,
@@ -184,6 +190,38 @@ export const getUsers = async (dispatch) => {
       })
       .catch((error) => {
         dispatch(getUsersFailure(error));
+        reject(error);
+      });
+  });
+};
+
+export const addVaccine = async (data, dispatch) => {
+  dispatch(addVaccineStart());
+  return await new Promise((resolve, reject) => {
+    axios
+      .post(`http://localhost:3001/api/vaccine`, data)
+      .then((response) => {
+        dispatch(addVaccineSuccess(response));
+        resolve(response);
+      })
+      .catch((error) => {
+        dispatch(addVaccineFailure(error));
+        reject(error);
+      });
+  });
+};
+
+export const getVaccines = async (id, dispatch) => {
+  dispatch(getVaccinesStart());
+  return await new Promise((resolve, reject) => {
+    axios
+      .get(`http://localhost:3001/api/vaccine/user/${id}`)
+      .then((response) => {
+        dispatch(getVaccinesSuccess(response));
+        resolve(response);
+      })
+      .catch((error) => {
+        dispatch(getVaccinesFailure(error));
         reject(error);
       });
   });
