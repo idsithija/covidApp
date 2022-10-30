@@ -49,6 +49,7 @@ function Disease() {
   function sendData(data) {
     var dataNew = { ...data, userid: user.id };
     addDisease(dataNew, dispatch);
+    window.location.reload();
   }
 
   return (

@@ -1,6 +1,6 @@
 const AuthReducer = (state, action) => {
   switch (action.type) {
-    case "AUTH_STRAT":
+    case "AUTH_START":
       return {
         ...state,
         isFetching: true,
@@ -55,7 +55,7 @@ const AuthReducer = (state, action) => {
         isFetching: false,
         error: false,
       };
-    case "SETTINGS_FAILIURE":
+    case "SETTINGS_FAILURE":
       return {
         ...state,
         isFetching: false,
@@ -133,6 +133,24 @@ const AuthReducer = (state, action) => {
         isFetching: false,
         error: true,
       };
+    case "GET_SETTINGS_START":
+      return {
+        ...state,
+        isFetching: true,
+        error: false,
+      };
+    case "GET_SETTINGS_SUCCESS":
+      return {
+        ...state,
+        isFetching: false,
+        error: false,
+      };
+    case "GET_SETTINGS_FAILURE":
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+      };
     case "GET_USERS_STRAT":
       return {
         ...state,
@@ -151,7 +169,7 @@ const AuthReducer = (state, action) => {
         isFetching: false,
         error: true,
       };
-    case "ADD_VACCINE_STRAT":
+    case "ADD_VACCINE_START":
       return {
         ...state,
         isFetching: true,
@@ -182,6 +200,24 @@ const AuthReducer = (state, action) => {
         error: false,
       };
     case "GET_VACCINE_FAILURE":
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+      };
+    case "GET_USER_START":
+      return {
+        ...state,
+        isFetching: true,
+        error: true,
+      };
+    case "GET_USER_SUCCESS":
+      return {
+        ...state,
+        isFetching: false,
+        error: false,
+      };
+    case "GET_USER_FAILURE":
       return {
         ...state,
         isFetching: false,

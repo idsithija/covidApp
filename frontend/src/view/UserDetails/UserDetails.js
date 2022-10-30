@@ -49,6 +49,7 @@ function UserDetails() {
   function sendData(data) {
     var dataNew = { ...data, userid: state.userid };
     addVaccine(dataNew, dispatch);
+    window.location.reload();
   }
 
   return (

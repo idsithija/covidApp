@@ -10,7 +10,7 @@ userRouter.post("/settings", async (request, response, next) => {
     if (user === null) {
       response.status(301).json("Please fill other the Settigs");
     } else {
-      response.status(200);
+      response.status(200).json("Success");
     }
   } catch (err) {
     next(err);
@@ -71,6 +71,16 @@ userRouter.get("/users", async (request, response, next) => {
   await User.find({ usertype: "USER" })
     .then((supports) => {
       response.json(supports);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
+userRouter.get("/user/:id", async (request, response, next) => {
+  await User.findOne({ userid: request.params.id })
+    .then((user) => {
+      response.json(user);
     })
     .catch((err) => {
       next(err);

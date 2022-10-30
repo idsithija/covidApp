@@ -1,5 +1,5 @@
 export const authStart = () => ({
-  type: "AUTH_STRAT",
+  type: "AUTH_START",
 });
 
 export const authSuccess = (data) => ({
@@ -64,11 +64,11 @@ export const adddiseaseFailure = () => ({
 });
 
 export const getDiseasesStart = () => ({
-  type: "GET_DISEASE_FAILURE",
+  type: "GET_DISEASE_START",
 });
 
 export const getDiseasesSuccess = () => ({
-  type: "GET_DISEASE_FAILURE",
+  type: "GET_DISEASE_SUCCESS",
 });
 
 export const getDiseasesFailure = () => ({
@@ -112,7 +112,7 @@ export const getUsersFailure = () => ({
 });
 
 export const addVaccineStart = () => ({
-  type: "ADD_VACCINE_STRAT",
+  type: "ADD_VACCINE_START",
 });
 
 export const addVaccineSuccess = () => ({
@@ -133,4 +133,16 @@ export const getVaccinesSuccess = () => ({
 
 export const getVaccinesFailure = () => ({
   type: "GET_VACCINE_FAILURE",
+});
+
+export const getUserStart = () => ({
+  type: "GET_USER_START",
+});
+
+export const getUserSuccess = () => ({
+  type: "GET_USER_SUCCESS",
+});
+
+export const getUserFailure = () => ({
+  type: "GET_USER_FAILURE",
 });

@@ -21,9 +21,12 @@ import {
   getSupportsFailure,
   getSupportsStart,
   getSupportsSuccess,
+  getUserFailure,
   getUsersFailure,
   getUsersStart,
   getUsersSuccess,
+  getUserStart,
+  getUserSuccess,
   getVaccinesFailure,
   getVaccinesStart,
   getVaccinesSuccess,
@@ -222,6 +225,22 @@ export const getVaccines = async (id, dispatch) => {
       })
       .catch((error) => {
         dispatch(getVaccinesFailure(error));
+        reject(error);
+      });
+  });
+};
+
+export const getUser = async (id, dispatch) => {
+  dispatch(getUserStart());
+  return await new Promise((resolve, reject) => {
+    axios
+      .get(`http://localhost:3001/api/user/user/${id}`)
+      .then((response) => {
+        dispatch(getUserSuccess(response));
+        resolve(response);
+      })
+      .catch((error) => {
+        dispatch(getUserFailure(error));
         reject(error);
       });
   });
