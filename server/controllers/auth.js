@@ -2,6 +2,7 @@ const authRouter = require("express").Router();
 const Auth = require("../models/auth");
 const bcrypt = require("bcrypt");
 const config = require("../utils/config");
+const nodemailer = require("nodemailer");
 
 const { sign } = require("jsonwebtoken");
 
@@ -21,6 +22,28 @@ authRouter.post("/", async (request, response, next) => {
       .save()
       .then((data) => {
         response.json(data);
+        var transporter = nodemailer.createTransport({
+          service: "Gmail",
+          auth: {
+            user: "idsithija@gmail.com",
+            pass: "svqospfotcsnvldq",
+          },
+        });
+
+        var mailOptions = {
+          from: "idsithija@gmail.com",
+          to: body.email,
+          subject: "Register",
+          text: `You are Successfully Registered`,
+        };
+
+        transporter.sendMail(mailOptions, function (error, info) {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log("Email sent: " + info.response);
+          }
+        });
       })
       .catch((error) => next(error));
   });
