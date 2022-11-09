@@ -15,8 +15,6 @@ function Ticket() {
     });
   }, [dispatch]);
 
-  console.log(ticket);
-
   const columns = [
     {
       name: "Patient name",

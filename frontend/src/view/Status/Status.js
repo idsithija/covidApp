@@ -47,14 +47,17 @@ function Status() {
             </div>
             <div className="mt-3">
               {vaccineList.length === 0
-                ? "You need to vaccinete 1 dose."
-                : "You need to vaccinete" +
+                ? "You need to vaccinate 1 dose."
+                : "You need to vaccinate" +
                     vaccineList.length +
                     1 +
                     "dose at" +
                     vaccineList[vaccineList.length - 1] !==
                   undefined
-                ? vaccineList[vaccineList.length - 1].expireDate
+                ? "You need to vaccinate " +
+                  (vaccineList.length + 1) +
+                  " dose at" +
+                  vaccineList[vaccineList.length - 1].expireDate
                 : null}
             </div>
             <DataTable className="mt-4" columns={columns} data={vaccineList} />
