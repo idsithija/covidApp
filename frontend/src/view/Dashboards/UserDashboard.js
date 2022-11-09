@@ -4,6 +4,12 @@ import SideBar from "../../components/SideBar/SideBar";
 import TopBar from "../../components/TopBar/TopBar";
 import { settings } from "../../context/apiCalls";
 import { MainContext } from "../../context/MainContext";
+import Soap from "../../assets/img/soap.png";
+import Patient from "../../assets/img/patient.png";
+import Social from "../../assets/img/social.png";
+import Man from "../../assets/img/man.png";
+import StayHome from "../../assets/img/stay-at-home.png";
+import Social1 from "../../assets/img/social1.png";
 
 function UserDashboard() {
   const Navigate = useNavigate();
@@ -48,35 +54,77 @@ function UserDashboard() {
               </button>
             </div>
           </div>
-          <div className="row flex-wrap gx-5 mt-5 gy-5">
+          <div className="row flex-wrap gx-5 mt-2 gy-4">
             <div className="col-6">
               <div className="shadow-sm bg-white rounded text-center count-box">
-                <h3 className="fw-semibold">Global Infection</h3>
-                <span className="count">650,000</span>
+                <img
+                  className="mb-2"
+                  src={Soap}
+                  alt="soap"
+                  width="60"
+                  height="60"
+                />
+                <h3 className="fw-semibold">Safety and Cleanliness First</h3>
               </div>
             </div>
             <div className="col-6">
               <div className="shadow-sm bg-white rounded text-center count-box">
-                <h3 className="fw-semibold">Global deaths</h3>
-                <span className="count">75,000</span>
+                <img
+                  className="mb-2"
+                  src={Man}
+                  alt="Man"
+                  width="60"
+                  height="60"
+                />
+                <h3 className="fw-semibold">Take Care of You</h3>
               </div>
             </div>
             <div className="col-6">
               <div className="shadow-sm bg-white rounded text-center count-box">
-                <h3 className="fw-semibold">Sri Lanka Infection</h3>
-                <span className="count">20,000</span>
+                <img
+                  className="mb-2"
+                  src={Social}
+                  alt="Social"
+                  width="60"
+                  height="60"
+                />
+                <h3 className="fw-semibold">Maintain Social Distance</h3>
               </div>
             </div>
             <div className="col-6">
               <div className="shadow-sm bg-white rounded text-center count-box">
-                <h3 className="fw-semibold">Sri Lanka Vaccinated count</h3>
-                <span className="count">100,000</span>
+                <img
+                  className="mb-2"
+                  src={Patient}
+                  alt="Patient"
+                  width="60"
+                  height="60"
+                />
+                <h3 className="fw-semibold">Wear a Mask</h3>
               </div>
             </div>
             <div className="col-6">
               <div className="shadow-sm bg-white rounded text-center count-box">
-                <h3 className="fw-semibold">Sri Lanka Survived count</h3>
-                <span className="count">50,000</span>
+                <img
+                  className="mb-2"
+                  src={StayHome}
+                  alt="StayHome"
+                  width="60"
+                  height="60"
+                />
+                <h3 className="fw-semibold">Stay at Home</h3>
+              </div>
+            </div>
+            <div className="col-6">
+              <div className="shadow-sm bg-white rounded text-center count-box">
+                <img
+                  className="mb-2"
+                  src={Social1}
+                  alt="Social1"
+                  width="60"
+                  height="60"
+                />
+                <h3 className="fw-semibold">Do not Group</h3>
               </div>
             </div>
           </div>
