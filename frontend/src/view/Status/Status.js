@@ -41,7 +41,7 @@ function Status() {
       <div className="layout-body">
         <div className="layout-container">
           <div className="shadow-sm p-3 mb-5 bg-white rounded filter-page">
-            <h1 className="title">Locations</h1>
+            <h1 className="title">Status</h1>
             <div className="welcome-title title-color mt-4">
               Current Status of {user.username}...
             </div>

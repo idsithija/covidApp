@@ -53,6 +53,13 @@ function Locations() {
       lat: 6.7216,
       lon: 79.9069,
     },
+    {
+      id: 3,
+      title: "Vaccine 03",
+      year: "Anuradapura",
+      lat: 8.3258,
+      lon: 80.4135,
+    },
   ];
 
   useEffect(() => {

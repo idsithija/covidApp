@@ -143,7 +143,7 @@ function UserDetails() {
                     <div className="row">
                       <div className="col-12 d-flex justify-content-end">
                         <button type="submit" className="btn btn-primary w-25">
-                          Add Disease
+                          Submit
                         </button>
                       </div>
                     </div>
