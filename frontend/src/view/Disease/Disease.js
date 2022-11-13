@@ -23,7 +23,7 @@ function Disease() {
       selector: (row) => row.diseasename,
     },
     {
-      name: "Count",
+      name: "Infected Count",
       selector: (row) => row.count,
     },
     {
@@ -90,7 +90,7 @@ function Disease() {
                       </div>
                       <div className="col-6 mb-4">
                         <label className="name fw-semibold">
-                          Vaccine Count
+                          Infected Count
                         </label>
                         <input
                           className="form-control mt-1"

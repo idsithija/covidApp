@@ -58,7 +58,7 @@ function UserDetails() {
       <TopBar />
       <div className="layout-body">
         <div className="layout-container">
-          <div className="shadow-sm p-3 mb-5 bg-white rounded filter-page">
+          <div className="shadow-sm p-3 mb-3 bg-white rounded filter-page">
             <h1 className="title">User Details</h1>
             <div className="welcome-title title-color mt-3">
               Current Status of {state.username}...
@@ -72,7 +72,7 @@ function UserDetails() {
             </div>
             <DataTable className="mt-4" columns={columns} data={vaccineList} />
           </div>
-          <div className="shadow-sm p-3 mb-5 bg-white rounded">
+          <div className="shadow-sm p-3 mb-3 bg-white rounded">
             <ul className="mt-2 mb-2 row">
               <li className="mb-3 col-6">
                 Full Name :
@@ -111,13 +111,17 @@ function UserDetails() {
                     <div className="row">
                       <div className="col-6 mb-4">
                         <label className="name fw-semibold">Vaccine Name</label>
-                        <input
-                          className="form-control mt-1"
+                        <select
                           name="vaccinename"
-                          placeholder="Vaccine Name..."
+                          className="form-control mt-1"
                           value={props.values.vaccinename}
                           onChange={props.handleChange}
-                        />
+                        >
+                          <option></option>
+                          <option value="Pfizer">Pfizer</option>
+                          <option value="Moderna">Moderna</option>
+                          <option value="Sinopharm">Sinopharm</option>
+                        </select>
                         <ErrorMessage
                           name="vaccinename"
                           component="span"
@@ -126,13 +130,17 @@ function UserDetails() {
                       </div>
                       <div className="col-6 mb-4">
                         <label className="name fw-semibold">Vaccine Dose</label>
-                        <input
-                          className="form-control mt-1"
+                        <select
                           name="vaccinedose"
-                          placeholder="Vaccine Dose..."
+                          className="form-control mt-1"
                           value={props.values.vaccinedose}
                           onChange={props.handleChange}
-                        />
+                        >
+                          <option></option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                        </select>
                         <ErrorMessage
                           name="vaccinedose"
                           component="span"
