@@ -139,6 +139,9 @@ span {
 
         &.active {
           color: #216fed;
+          background: white;
+          padding: 5px;
+          border-radius: 2px;
         }
 
         .link-text {
@@ -213,4 +216,9 @@ span {
     left: 50%;
     transform: translate(-50%, -50%);
   }
+}
+
+.logo1 {
+  width: 250px;
+  height: auto;
 }
