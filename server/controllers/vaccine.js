@@ -37,13 +37,13 @@ vaccineRouter.post("/", async (request, response, next) => {
       var transporter = nodemailer.createTransport({
         service: "Gmail",
         auth: {
-          user: "idsithija@gmail.com",
-          pass: "svqospfotcsnvldq",
+          user: "asankasajini30@gmail.com",
+          pass: "istyyfhtjcjdbqsh",
         },
       });
 
       var mailOptions = {
-        from: "idsithija@gmail.com",
+        from: "asankasajini30@gmail.com",
         to: user.email,
         subject: "Vaccine",
         text: `You are Successfully Vaccinated. You will need to vaccine next dose on ${fecha2}`,
