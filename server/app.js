@@ -10,6 +10,7 @@ const userRouter = require("./controllers/user");
 const vaccineRouter = require("./controllers/vaccine");
 const diseaseRouter = require("./controllers/disease");
 const supportRouter = require("./controllers/support");
+const locationsRouter = require("./controllers/locations");
 
 mongoose
   .connect(config.MONGOOSE_URL)
@@ -29,6 +30,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
 app.use("/api/vaccine", vaccineRouter);
 app.use("/api/disease", diseaseRouter);
+app.use("/api/location", locationsRouter);
 app.use("/api/support", supportRouter);
 
 module.exports = app;

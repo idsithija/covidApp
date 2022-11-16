@@ -146,3 +146,39 @@ export const getUserSuccess = () => ({
 export const getUserFailure = () => ({
   type: "GET_USER_FAILURE",
 });
+
+export const getLocationsStart = () => ({
+  type: "GET_LOCATIONS_START",
+});
+
+export const getLocationsSuccess = () => ({
+  type: "GET_LOCATIONS_SUCCESS",
+});
+
+export const getLocationsFailure = () => ({
+  type: "GET_LOCATIONS_FAILURE",
+});
+
+export const addLocationStart = () => ({
+  type: "ADD_LOCATION_START",
+});
+
+export const addLocationSuccess = () => ({
+  type: "ADD_LOCATION_SUCCESS",
+});
+
+export const addLocationFailure = () => ({
+  type: "ADD_LOCATION_FAILURE",
+});
+
+export const getSummaryStart = () => ({
+  type: "GET_SUMMARY_START",
+});
+
+export const getSummarySuccess = () => ({
+  type: "GET_SUMMARY_SUCCESS",
+});
+
+export const getSummaryFailure = () => ({
+  type: "GET_SUMMARY_FAILURE",
+});

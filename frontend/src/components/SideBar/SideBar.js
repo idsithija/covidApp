@@ -5,7 +5,6 @@ import {
   faDatabase,
   faTicket,
   faCog,
-  faArchive,
   faLocationArrow,
   faQuestionCircle,
   faListAlt,
@@ -46,17 +45,6 @@ function SideBar() {
             </NavLink>
           </li>
         ) : null}
-        {user.usertype === "USER" ? (
-          <li className="item">
-            <NavLink
-              className="nav-item d-flex align-items-center"
-              to="/status"
-            >
-              <FontAwesomeIcon icon={faArchive} width="30" />
-              <span className="link-text">Status</span>
-            </NavLink>
-          </li>
-        ) : null}
         {user.usertype !== "USER" ? (
           <li className="item">
             <NavLink className="nav-item d-flex align-items-center" to="/data">
@@ -84,6 +72,17 @@ function SideBar() {
             >
               <FontAwesomeIcon icon={faListAlt} width="30" />
               <span className="link-text">Disease</span>
+            </NavLink>
+          </li>
+        ) : null}
+        {user.usertype !== "USER" ? (
+          <li className="item">
+            <NavLink
+              className="nav-item d-flex align-items-center"
+              to="/addlocations"
+            >
+              <FontAwesomeIcon icon={faLocationArrow} width="30" />
+              <span className="link-text">Locations</span>
             </NavLink>
           </li>
         ) : null}

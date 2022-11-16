@@ -223,6 +223,60 @@ const AuthReducer = (state, action) => {
         isFetching: false,
         error: true,
       };
+    case "GET_LOCATIONS_START":
+      return {
+        ...state,
+        isFetching: true,
+        error: false,
+      };
+    case "GET_LOCATIONS_SUCCESS":
+      return {
+        ...state,
+        isFetching: false,
+        error: false,
+      };
+    case "GET_LOCATIONS_FAILURE":
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+      };
+    case "ADD_LOCATION_START":
+      return {
+        ...state,
+        isFetching: true,
+        error: false,
+      };
+    case "ADD_LOCATION_SUCCESS":
+      return {
+        ...state,
+        isFetching: false,
+        error: false,
+      };
+    case "ADD_LOCATION_FAILURE":
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+      };
+    case "GET_SUMMARY_START":
+      return {
+        ...state,
+        isFetching: true,
+        error: false,
+      };
+    case "GET_SUMMARY_SUCCESS":
+      return {
+        ...state,
+        isFetching: false,
+        error: false,
+      };
+    case "GET_SUMMARY_FAILURE":
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+      };
     default:
       return { ...state };
   }

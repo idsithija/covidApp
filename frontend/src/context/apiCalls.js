@@ -3,6 +3,9 @@ import {
   adddiseaseFailure,
   adddiseaseStart,
   adddiseaseSuccess,
+  addLocationFailure,
+  addLocationStart,
+  addLocationSuccess,
   addSupportFailure,
   addSupportStart,
   addSupportSuccess,
@@ -15,9 +18,15 @@ import {
   getDiseasesFailure,
   getDiseasesStart,
   getDiseasesSuccess,
+  getLocationsFailure,
+  getLocationsStart,
+  getLocationsSuccess,
   getSettingsFailure,
   getSettingsStart,
   getSettingsSuccess,
+  getSummaryFailure,
+  getSummaryStart,
+  getSummarySuccess,
   getSupportsFailure,
   getSupportsStart,
   getSupportsSuccess,
@@ -150,6 +159,38 @@ export const getDiseases = async (dispatch) => {
   });
 };
 
+export const getLocations = async (dispatch) => {
+  dispatch(getLocationsStart());
+  return await new Promise((resolve, reject) => {
+    axios
+      .get(`http://localhost:3001/api/location/getLocations`)
+      .then((response) => {
+        dispatch(getLocationsSuccess(response));
+        resolve(response);
+      })
+      .catch((error) => {
+        dispatch(getLocationsFailure(error));
+        reject(error);
+      });
+  });
+};
+
+export const addLocation = async (data, dispatch) => {
+  dispatch(addLocationStart());
+  return await new Promise((resolve, reject) => {
+    axios
+      .post(`http://localhost:3001/api/location`, data)
+      .then((response) => {
+        dispatch(addLocationSuccess(response));
+        resolve(response);
+      })
+      .catch((error) => {
+        dispatch(addLocationFailure(error));
+        reject(error);
+      });
+  });
+};
+
 export const addSupport = async (data, dispatch) => {
   dispatch(addSupportStart());
   return await new Promise((resolve, reject) => {
@@ -241,6 +282,22 @@ export const getUser = async (id, dispatch) => {
       })
       .catch((error) => {
         dispatch(getUserFailure(error));
+        reject(error);
+      });
+  });
+};
+
+export const getSummary = async (dispatch) => {
+  dispatch(getSummaryStart());
+  return await new Promise((resolve, reject) => {
+    axios
+      .get(`https://api.covid19api.com/summary`)
+      .then((response) => {
+        dispatch(getSummarySuccess(response));
+        resolve(response);
+      })
+      .catch((error) => {
+        dispatch(getSummaryFailure(error));
         reject(error);
       });
   });

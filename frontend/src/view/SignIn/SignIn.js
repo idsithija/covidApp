@@ -1,5 +1,5 @@
 import { ErrorMessage, Formik } from "formik";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SignInImg from "../../assets/img/login_bg.png";
 import { auth } from "../../context/apiCalls";
@@ -9,6 +9,7 @@ import * as Yup from "yup";
 function SignIn() {
   const { dispatch } = useContext(MainContext);
   const Navigate = useNavigate();
+  const [errMsg, setErrMsg] = useState("");
 
   const initalValue = {
     username: "",
@@ -23,10 +24,16 @@ function SignIn() {
   });
 
   function signIn(data) {
-    auth(data, dispatch).then(() => {
-      Navigate("/dashboard");
-    });
+    auth(data, dispatch)
+      .then(() => {
+        Navigate("/dashboard");
+      })
+      .catch((err) => {
+        setErrMsg(err.response.data.error);
+      });
   }
+
+  console.log(errMsg);
 
   return (
     <div className="vh-100 d-flex">
@@ -84,6 +91,7 @@ function SignIn() {
                   </div>
                 </div>
                 <div className="row mt-5">
+                  <span className="error mb-3">{errMsg}</span>
                   <div className="col-12">
                     <button type="submit" className="btn btn-primary w-100">
                       Sign In
