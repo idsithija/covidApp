@@ -12,7 +12,6 @@ import AdminSettings from "../view/Settings/AdminSettings";
 import Ticket from "../view/Ticket/Ticket";
 import SignIn from "../view/SignIn/SignIn";
 import SignUp from "../view/SignUp/SignUp";
-import Status from "../view/Status/Status";
 import Locations from "../view/Locations/Locations";
 import Support from "../view/Support/Support";
 import Disease from "../view/Disease/Disease";
@@ -57,14 +56,6 @@ function RouteGaurd() {
           element={
             <UserProtectedRoute user={user}>
               <UserDashboard />
-            </UserProtectedRoute>
-          }
-        />
-        <Route
-          path="/status"
-          element={
-            <UserProtectedRoute user={user}>
-              <Status />
             </UserProtectedRoute>
           }
         />

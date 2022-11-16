@@ -111,18 +111,6 @@ export const getUsersFailure = () => ({
   type: "GET_USERS_FAILURE",
 });
 
-export const addVaccineStart = () => ({
-  type: "ADD_VACCINE_START",
-});
-
-export const addVaccineSuccess = () => ({
-  type: "ADD_VACCINE_SUCCESS",
-});
-
-export const addVaccineFailure = () => ({
-  type: "ADD_VACCINE_FAILURE",
-});
-
 export const getVaccinesStart = () => ({
   type: "GET_VACCINE_START",
 });
@@ -133,6 +121,18 @@ export const getVaccinesSuccess = () => ({
 
 export const getVaccinesFailure = () => ({
   type: "GET_VACCINE_FAILURE",
+});
+
+export const addVaccineStart = () => ({
+  type: "ADD_VACCINE_START",
+});
+
+export const addVaccineSuccess = () => ({
+  type: "ADD_VACCINE_SUCCESS",
+});
+
+export const addVaccineFailure = () => ({
+  type: "ADD_VACCINE_FAILURE",
 });
 
 export const getUserStart = () => ({

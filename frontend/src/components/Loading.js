@@ -6,7 +6,7 @@ function Loading({ isFetching }) {
       {isFetching ? (
         <div className="overlay">
           <div className="spinner-border text-light" role="status">
-            <span className="sr-only">Loading...</span>
+            <span className="sr-only"></span>
           </div>
         </div>
       ) : null}

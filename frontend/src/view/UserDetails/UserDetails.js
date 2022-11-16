@@ -17,7 +17,7 @@ function UserDetails() {
     getVaccines(state.userid, dispatch).then((response) => {
       setVaccineList(response.data);
     });
-  }, [dispatch, state.userid]);
+  }, [state.userid, dispatch]);
 
   const columns = [
     {
@@ -64,7 +64,8 @@ function UserDetails() {
               Current Status of {state.username}...
             </div>
             <div className="mt-3">
-              You need to vaccinete {vaccineList.length + 1} dose at{" "}
+              {state.username} need to vaccinete {vaccineList.length + 1} dose
+              at{" "}
               {vaccineList[vaccineList.length - 1] !== undefined
                 ? vaccineList[vaccineList.length - 1].expireDate
                 : null}

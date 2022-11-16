@@ -83,7 +83,7 @@ const AuthReducer = (state, action) => {
       return {
         ...state,
         isFetching: true,
-        error: true,
+        error: false,
       };
     case "GET_DISEASE_SUCCESS":
       return {
@@ -101,7 +101,7 @@ const AuthReducer = (state, action) => {
       return {
         ...state,
         isFetching: true,
-        error: true,
+        error: false,
       };
     case "ADD_SUPPORT_SUCCESS":
       return {
@@ -119,7 +119,7 @@ const AuthReducer = (state, action) => {
       return {
         ...state,
         isFetching: true,
-        error: true,
+        error: false,
       };
     case "GET_SUPPORTS_SUCCESS":
       return {
@@ -155,7 +155,7 @@ const AuthReducer = (state, action) => {
       return {
         ...state,
         isFetching: true,
-        error: true,
+        error: false,
       };
     case "GET_USERS_SUCCESS":
       return {
@@ -169,29 +169,11 @@ const AuthReducer = (state, action) => {
         isFetching: false,
         error: true,
       };
-    case "ADD_VACCINE_START":
-      return {
-        ...state,
-        isFetching: true,
-        error: true,
-      };
-    case "ADD_VACCINE_SUCCESS":
-      return {
-        ...state,
-        isFetching: false,
-        error: false,
-      };
-    case "ADD_VACCINE_FAILURE":
-      return {
-        ...state,
-        isFetching: false,
-        error: true,
-      };
     case "GET_VACCINE_START":
       return {
         ...state,
         isFetching: true,
-        error: true,
+        error: false,
       };
     case "GET_VACCINE_SUCCESS":
       return {
@@ -205,11 +187,29 @@ const AuthReducer = (state, action) => {
         isFetching: false,
         error: true,
       };
+    case "ADD_VACCINE_START":
+      return {
+        ...state,
+        isFetching: true,
+        error: false,
+      };
+    case "ADD_VACCINE_SUCCESS":
+      return {
+        ...state,
+        isFetching: false,
+        error: false,
+      };
+    case "ADD_VACCINE_FAILURE":
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+      };
     case "GET_USER_START":
       return {
         ...state,
         isFetching: true,
-        error: true,
+        error: false,
       };
     case "GET_USER_SUCCESS":
       return {

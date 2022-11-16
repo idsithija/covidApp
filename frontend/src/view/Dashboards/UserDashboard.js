@@ -4,17 +4,15 @@ import SideBar from "../../components/SideBar/SideBar";
 import TopBar from "../../components/TopBar/TopBar";
 import { settings } from "../../context/apiCalls";
 import { MainContext } from "../../context/MainContext";
-import Soap from "../../assets/img/soap.png";
-import Patient from "../../assets/img/patient.png";
-import Social from "../../assets/img/social.png";
-import Man from "../../assets/img/man.png";
-import StayHome from "../../assets/img/stay-at-home.png";
-import Social1 from "../../assets/img/social1.png";
+import { getUser, getVaccines } from "../../context/apiCalls";
+import DataTable from "react-data-table-component";
 
 function UserDashboard() {
   const Navigate = useNavigate();
   const { user, dispatch } = useContext(MainContext);
   const [errorMsg, setErrorMsg] = useState("");
+  const [vaccineList, setVaccineList] = useState([]);
+  const [userData, setUserData] = useState({});
 
   useEffect(() => {
     settings({ userid: user.id }, dispatch).catch((error) => {
@@ -25,6 +23,31 @@ function UserDashboard() {
   const clickSetting = () => {
     Navigate("/details");
   };
+
+  useEffect(() => {
+    getVaccines(user.id, dispatch).then((response) => {
+      setVaccineList(response.data);
+    });
+    getUser(user.id, dispatch).then((response) => {
+      setUserData(response.data);
+    });
+  }, [dispatch, user.id]);
+
+  const columns = [
+    {
+      name: "Vaccine Name",
+      selector: (row) => row.vaccinename,
+    },
+    {
+      name: "Vaccinated Dose",
+      selector: (row) => row.vaccinedose,
+    },
+    {
+      name: "Expire Date",
+      selector: (row) => row.expireDate,
+    },
+  ];
+
   return (
     <>
       <SideBar />
@@ -54,79 +77,72 @@ function UserDashboard() {
               </button>
             </div>
           </div>
-          <div className="row flex-wrap gx-5 mt-2 gy-4">
-            <div className="col-6">
-              <div className="shadow-sm bg-white rounded text-center count-box">
-                <img
-                  className="mb-2"
-                  src={Soap}
-                  alt="soap"
-                  width="60"
-                  height="60"
-                />
-                <h3 className="fw-semibold">Safety and Cleanliness First</h3>
-              </div>
+          <div className="shadow-sm p-3 mb-5 mt-3 bg-white rounded filter-page">
+            <h1 className="title">Status</h1>
+            <div className="welcome-title title-color mt-4">
+              Current Status of {user.username}...
             </div>
-            <div className="col-6">
-              <div className="shadow-sm bg-white rounded text-center count-box">
-                <img
-                  className="mb-2"
-                  src={Man}
-                  alt="Man"
-                  width="60"
-                  height="60"
-                />
-                <h3 className="fw-semibold">Take Care of You</h3>
-              </div>
+            <div className="mt-3">
+              {vaccineList.length === 0
+                ? "You need to vaccinate 1 dose."
+                : "You need to vaccinate" +
+                    vaccineList.length +
+                    1 +
+                    "dose at" +
+                    vaccineList[vaccineList.length - 1] !==
+                  undefined
+                ? "You need to vaccinate " +
+                  (vaccineList.length + 1) +
+                  " dose at" +
+                  vaccineList[vaccineList.length - 1].expireDate
+                : null}
             </div>
-            <div className="col-6">
-              <div className="shadow-sm bg-white rounded text-center count-box">
-                <img
-                  className="mb-2"
-                  src={Social}
-                  alt="Social"
-                  width="60"
-                  height="60"
-                />
-                <h3 className="fw-semibold">Maintain Social Distance</h3>
-              </div>
-            </div>
-            <div className="col-6">
-              <div className="shadow-sm bg-white rounded text-center count-box">
-                <img
-                  className="mb-2"
-                  src={Patient}
-                  alt="Patient"
-                  width="60"
-                  height="60"
-                />
-                <h3 className="fw-semibold">Wear a Mask</h3>
-              </div>
-            </div>
-            <div className="col-6">
-              <div className="shadow-sm bg-white rounded text-center count-box">
-                <img
-                  className="mb-2"
-                  src={StayHome}
-                  alt="StayHome"
-                  width="60"
-                  height="60"
-                />
-                <h3 className="fw-semibold">Stay at Home</h3>
-              </div>
-            </div>
-            <div className="col-6">
-              <div className="shadow-sm bg-white rounded text-center count-box">
-                <img
-                  className="mb-2"
-                  src={Social1}
-                  alt="Social1"
-                  width="60"
-                  height="60"
-                />
-                <h3 className="fw-semibold">Do not Group</h3>
-              </div>
-            </div>
+            <DataTable className="mt-4" columns={columns} data={vaccineList} />
+          </div>
+
+          <div className="shadow-sm p-3 mb-5 bg-white rounded">
+            <ul className="mt-5 mb-5 row">
+              <li className="mb-3 col-6">
+                Full Name :
+                {userData !== null ? (
+                  <span className="title-color ms-4">{userData.fullname}</span>
+                ) : null}
+              </li>
+              <li className="mb-3 col-6">
+                Date of Birth :
+                {userData !== null ? (
+                  <span className="title-color ms-4">{userData.dob}</span>
+                ) : null}
+              </li>
+              <li className="mb-3 col-6">
+                NIC :
+                {userData !== null ? (
+                  <span className="title-color ms-4">{userData.nic}</span>
+                ) : null}
+              </li>
+              <li className="mb-3 col-6">
+                Gender :
+                {userData !== null ? (
+                  <span className="title-color ms-4">{userData.gender}</span>
+                ) : null}
+              </li>
+              <li className="col-6">
+                Blood Group :
+                {userData !== null ? (
+                  <span className="title-color ms-4">
+                    {userData.bloodgroup}
+                  </span>
+                ) : null}
+              </li>
+              <li className="col-6">
+                Phone Number :
+                {userData !== null ? (
+                  <span className="title-color ms-4">
+                    {userData.mobilephone}
+                  </span>
+                ) : null}
+              </li>
+            </ul>
           </div>
         </div>
       </div>
