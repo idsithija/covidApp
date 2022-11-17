@@ -8,6 +8,7 @@ import {
   faLocationArrow,
   faQuestionCircle,
   faListAlt,
+  faUserDoctor,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, NavLink } from "react-router-dom";
 import { MainContext } from "../../context/MainContext";
@@ -72,6 +73,28 @@ function SideBar() {
             >
               <FontAwesomeIcon icon={faListAlt} width="30" />
               <span className="link-text">Disease</span>
+            </NavLink>
+          </li>
+        ) : null}
+        {user.usertype !== "USER" ? (
+          <li className="item">
+            <NavLink
+              className="nav-item d-flex align-items-center"
+              to="/doctors"
+            >
+              <FontAwesomeIcon icon={faUserDoctor} width="30" />
+              <span className="link-text">Doctors</span>
+            </NavLink>
+          </li>
+        ) : null}
+        {user.usertype === "USER" ? (
+          <li className="item">
+            <NavLink
+              className="nav-item d-flex align-items-center"
+              to="/doctorslist"
+            >
+              <FontAwesomeIcon icon={faUserDoctor} width="30" />
+              <span className="link-text">Doctors</span>
             </NavLink>
           </li>
         ) : null}

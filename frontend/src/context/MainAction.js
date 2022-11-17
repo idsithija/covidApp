@@ -182,3 +182,27 @@ export const getSummarySuccess = () => ({
 export const getSummaryFailure = () => ({
   type: "GET_SUMMARY_FAILURE",
 });
+
+export const getDoctorsStart = () => ({
+  type: "GET_DOCTORS_START",
+});
+
+export const getDoctorsSuccess = () => ({
+  type: "GET_DOCTORS_SUCCESS",
+});
+
+export const getDoctorsFailure = () => ({
+  type: "GET_DOCTORS_FAILURE",
+});
+
+export const addDoctorsStart = () => ({
+  type: "ADD_DOCTORS_START",
+});
+
+export const addDoctorsSuccess = () => ({
+  type: "ADD_DOCTORS_SUCCESS",
+});
+
+export const addDoctorsFailure = () => ({
+  type: "ADD_DOCTORS_FAILURE",
+});

@@ -3,6 +3,9 @@ import {
   adddiseaseFailure,
   adddiseaseStart,
   adddiseaseSuccess,
+  addDoctorsFailure,
+  addDoctorsStart,
+  addDoctorsSuccess,
   addLocationFailure,
   addLocationStart,
   addLocationSuccess,
@@ -18,6 +21,9 @@ import {
   getDiseasesFailure,
   getDiseasesStart,
   getDiseasesSuccess,
+  getDoctorsFailure,
+  getDoctorsStart,
+  getDoctorsSuccess,
   getLocationsFailure,
   getLocationsStart,
   getLocationsSuccess,
@@ -298,6 +304,38 @@ export const getSummary = async (dispatch) => {
       })
       .catch((error) => {
         dispatch(getSummaryFailure(error));
+        reject(error);
+      });
+  });
+};
+
+export const getDoctors = async (dispatch) => {
+  dispatch(getDoctorsStart());
+  return await new Promise((resolve, reject) => {
+    axios
+      .get(`http://localhost:3001/api/doctors/getDoctors`)
+      .then((response) => {
+        dispatch(getDoctorsSuccess(response));
+        resolve(response);
+      })
+      .catch((error) => {
+        dispatch(getDoctorsFailure(error));
+        reject(error);
+      });
+  });
+};
+
+export const addDoctors = async (data, dispatch) => {
+  dispatch(addDoctorsStart());
+  return await new Promise((resolve, reject) => {
+    axios
+      .post(`http://localhost:3001/api/doctors`, data)
+      .then((response) => {
+        dispatch(addDoctorsSuccess(response));
+        resolve(response);
+      })
+      .catch((error) => {
+        dispatch(addDoctorsFailure(error));
         reject(error);
       });
   });

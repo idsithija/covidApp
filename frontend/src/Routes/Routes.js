@@ -22,6 +22,7 @@ import { MainContext } from "../context/MainContext";
 import UserProtectedRoute from "../helpers/UserProtectedRoute";
 import UserDetails from "../view/UserDetails/UserDetails";
 import AddLocation from "../view/Locations/AddLocations";
+import Doctors from "../view/Doctors/Doctors";
 
 function RouteGaurd() {
   const { user } = useContext(MainContext);
@@ -98,6 +99,22 @@ function RouteGaurd() {
             <ProtectedRoute user={user}>
               <Disease />
             </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/doctors"
+          element={
+            <ProtectedRoute user={user}>
+              <Doctors />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/doctorslist"
+          element={
+            <UserProtectedRoute user={user}>
+              <Doctors />
+            </UserProtectedRoute>
           }
         />
         <Route

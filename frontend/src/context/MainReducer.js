@@ -277,6 +277,42 @@ const AuthReducer = (state, action) => {
         isFetching: false,
         error: true,
       };
+    case "GET_DOCTORS_START":
+      return {
+        ...state,
+        isFetching: true,
+        error: false,
+      };
+    case "GET_DOCTORS_SUCCESS":
+      return {
+        ...state,
+        isFetching: false,
+        error: false,
+      };
+    case "GET_DOCTORS_FAILURE":
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+      };
+    case "ADD_DOCTORS_START":
+      return {
+        ...state,
+        isFetching: true,
+        error: false,
+      };
+    case "ADD_DOCTORS_SUCCESS":
+      return {
+        ...state,
+        isFetching: false,
+        error: false,
+      };
+    case "ADD_DOCTORS_FAILURE":
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+      };
     default:
       return { ...state };
   }
