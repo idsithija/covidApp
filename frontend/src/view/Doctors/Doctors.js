@@ -11,7 +11,9 @@ function Doctors() {
   const { user, dispatch } = useContext(MainContext);
   const [doctorList, setDoctorList] = useState([]);
   const nameRef = useRef();
+  const locationRef = useRef();
   const [search, setSearch] = useState("");
+  const [locationData, setLocationData] = useState("");
 
   useEffect(() => {
     getDoctors(dispatch).then((response) => {
@@ -29,6 +31,10 @@ function Doctors() {
       selector: (row) => row.illness,
     },
     {
+      name: "Location",
+      selector: (row) => row.location,
+    },
+    {
       name: "Phone Number",
       selector: (row) => row.phonenumber,
     },
@@ -37,6 +43,7 @@ function Doctors() {
   const initalValue = {
     doctorname: "",
     illness: "",
+    location: "",
     phonenumber: "",
   };
 
@@ -46,6 +53,7 @@ function Doctors() {
     doctorname: Yup.string().required("Doctor Name is required!"),
     illness: Yup.string().required("Illness is required!"),
     phonenumber: Yup.string().required("Phone Number is required!"),
+    location: Yup.string().required("Location is required!"),
   });
 
   function sendData(data) {
@@ -58,19 +66,30 @@ function Doctors() {
     setSearch("" + event.target.value + "");
   };
 
-  const clearFilter = () => {
-    nameRef.current.value = "";
-    setSearch("");
+  const handleSearchLocation = (event) => {
+    setLocationData("" + event.target.value + "");
   };
 
-  const userToShow = search
-    ? doctorList.filter(function (doctor) {
-        return (
-          doctor.illness.toLowerCase().indexOf("" + search.toLowerCase() + "") >
-          -1
-        );
-      })
-    : doctorList;
+  const clearFilter = () => {
+    nameRef.current.value = "";
+    locationRef.current.value = "";
+    setSearch("");
+    setLocationData("");
+  };
+
+  const userToShow =
+    search || locationData
+      ? doctorList.filter(function (doctor) {
+          return (
+            doctor.illness
+              .toLowerCase()
+              .indexOf("" + search.toLowerCase() + "") > -1 &&
+            doctor.location
+              .toLowerCase()
+              .indexOf("" + locationData.toLowerCase() + "") > -1
+          );
+        })
+      : doctorList;
 
   return (
     <>
@@ -89,6 +108,16 @@ function Doctors() {
                     name="name"
                     placeholder="Illness..."
                     onChange={handleSearch}
+                  />
+                </div>
+                <div className="col-3">
+                  <label className="name">Location</label>
+                  <input
+                    ref={locationRef}
+                    className="form-control mt-1"
+                    name="location"
+                    placeholder="Location..."
+                    onChange={handleSearchLocation}
                   />
                 </div>
               </div>
@@ -162,6 +191,23 @@ function Doctors() {
                           />
                           <ErrorMessage
                             name="phonenumber"
+                            component="span"
+                            className="error"
+                          />
+                        </div>
+                        <div className="col-6 mb-4">
+                          <label className="name fw-semibold">
+                            Phone Number
+                          </label>
+                          <input
+                            className="form-control mt-1"
+                            name="location"
+                            placeholder="Location..."
+                            value={props.values.location}
+                            onChange={props.handleChange}
+                          />
+                          <ErrorMessage
+                            name="location"
                             component="span"
                             className="error"
                           />
