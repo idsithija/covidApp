@@ -195,7 +195,7 @@ function VaccineList() {
                             type="submit"
                             className="btn btn-primary w-25"
                           >
-                            Add Doctor
+                            Add Vaccine
                           </button>
                         </div>
                       </div>
