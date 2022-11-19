@@ -33,8 +33,6 @@ function SignIn() {
       });
   }
 
-  console.log(errMsg);
-
   return (
     <div className="vh-100 d-flex">
       <div className="col-8 h-100 main-color login-p-l">
