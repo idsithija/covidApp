@@ -313,6 +313,42 @@ const AuthReducer = (state, action) => {
         isFetching: false,
         error: true,
       };
+    case "GET_VACCINE_LIST_START":
+      return {
+        ...state,
+        isFetching: true,
+        error: false,
+      };
+    case "GET_VACCINE_LIST_SUCCESS":
+      return {
+        ...state,
+        isFetching: false,
+        error: false,
+      };
+    case "GET_VACCINE_LIST_FAILURE":
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+      };
+    case "ADD_VACCINE_LIST_START":
+      return {
+        ...state,
+        isFetching: true,
+        error: false,
+      };
+    case "ADD_VACCINE_LIST_SUCCESS":
+      return {
+        ...state,
+        isFetching: false,
+        error: false,
+      };
+    case "ADD_VACCINE_LIST_FAILURE":
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+      };
     default:
       return { ...state };
   }

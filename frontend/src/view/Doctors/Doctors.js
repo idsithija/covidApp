@@ -98,6 +98,7 @@ function Doctors() {
       <div className="layout-body">
         <div className="layout-container">
           <div className="shadow-sm p-3 mb-5 bg-white rounded filter-page">
+            <h1 className="title">Doctors</h1>
             <div className="filter-section mt-4">
               <div className="row flex-wrap mt-3 mb-3">
                 <div className="col-3">
@@ -131,12 +132,11 @@ function Doctors() {
                 </button>
               </div>
             </div>
-            <h1 className="title">Doctors</h1>
             <DataTable className="mt-4" columns={columns} data={userToShow} />
           </div>
           {user.usertype !== "USER" ? (
             <div className="shadow-sm p-3 bg-white rounded filter-page">
-              <h1 className="title">Add Doctor</h1>
+              <h1 className="title">Add Doctors</h1>
               <div className="mt-4">
                 <Formik
                   initialValues={initalValue}
@@ -196,9 +196,7 @@ function Doctors() {
                           />
                         </div>
                         <div className="col-6 mb-4">
-                          <label className="name fw-semibold">
-                            Phone Number
-                          </label>
+                          <label className="name fw-semibold">Location</label>
                           <input
                             className="form-control mt-1"
                             name="location"

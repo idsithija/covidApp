@@ -13,6 +13,9 @@ import {
   addSupportStart,
   addSupportSuccess,
   addVaccineFailure,
+  addVaccineListFailure,
+  addVaccineListStart,
+  addVaccineListSuccess,
   addVaccineStart,
   addVaccineSuccess,
   authFailure,
@@ -42,6 +45,9 @@ import {
   getUsersSuccess,
   getUserStart,
   getUserSuccess,
+  getVaccineListFailure,
+  getVaccineListStart,
+  getVaccineListSuccess,
   getVaccinesFailure,
   getVaccinesStart,
   getVaccinesSuccess,
@@ -336,6 +342,38 @@ export const addDoctors = async (data, dispatch) => {
       })
       .catch((error) => {
         dispatch(addDoctorsFailure(error));
+        reject(error);
+      });
+  });
+};
+
+export const getVaccineList = async (dispatch) => {
+  dispatch(getVaccineListStart());
+  return await new Promise((resolve, reject) => {
+    axios
+      .get(`http://localhost:3001/api/vaccineList/getVaccineList`)
+      .then((response) => {
+        dispatch(getVaccineListSuccess(response));
+        resolve(response);
+      })
+      .catch((error) => {
+        dispatch(getVaccineListFailure(error));
+        reject(error);
+      });
+  });
+};
+
+export const addVaccineList = async (data, dispatch) => {
+  dispatch(addVaccineListStart());
+  return await new Promise((resolve, reject) => {
+    axios
+      .post(`http://localhost:3001/api/vaccineList`, data)
+      .then((response) => {
+        dispatch(addVaccineListSuccess(response));
+        resolve(response);
+      })
+      .catch((error) => {
+        dispatch(addVaccineListFailure(error));
         reject(error);
       });
   });

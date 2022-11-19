@@ -9,6 +9,7 @@ import {
   faQuestionCircle,
   faListAlt,
   faUserDoctor,
+  faVialVirus,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, NavLink } from "react-router-dom";
 import { MainContext } from "../../context/MainContext";
@@ -106,6 +107,17 @@ function SideBar() {
             >
               <FontAwesomeIcon icon={faLocationArrow} width="30" />
               <span className="link-text">Locations</span>
+            </NavLink>
+          </li>
+        ) : null}
+        {user.usertype !== "USER" ? (
+          <li className="item">
+            <NavLink
+              className="nav-item d-flex align-items-center"
+              to="/vaccinelist"
+            >
+              <FontAwesomeIcon icon={faVialVirus} width="30" />
+              <span className="link-text">Vaccine List</span>
             </NavLink>
           </li>
         ) : null}

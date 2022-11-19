@@ -206,3 +206,27 @@ export const addDoctorsSuccess = () => ({
 export const addDoctorsFailure = () => ({
   type: "ADD_DOCTORS_FAILURE",
 });
+
+export const getVaccineListStart = () => ({
+  type: "GET_VACCINE_LIST_START",
+});
+
+export const getVaccineListSuccess = () => ({
+  type: "GET_VACCINE_LIST_SUCCESS",
+});
+
+export const getVaccineListFailure = () => ({
+  type: "GET_VACCINE_LIST_FAILURE",
+});
+
+export const addVaccineListStart = () => ({
+  type: "ADD_VACCINE_LIST_START",
+});
+
+export const addVaccineListSuccess = () => ({
+  type: "ADD_VACCINE_LIST_SUCCESS",
+});
+
+export const addVaccineListFailure = () => ({
+  type: "ADD_VACCINE_LIST_FAILURE",
+});
