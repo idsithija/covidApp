@@ -349,6 +349,24 @@ const AuthReducer = (state, action) => {
         isFetching: false,
         error: true,
       };
+    case "DELETE_TICKET_START":
+      return {
+        ...state,
+        isFetching: true,
+        error: false,
+      };
+    case "DELETE_TICKET_SUCCESS":
+      return {
+        ...state,
+        isFetching: false,
+        error: false,
+      };
+    case "DELETE_TICKET_FAILURE":
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+      };
     default:
       return { ...state };
   }

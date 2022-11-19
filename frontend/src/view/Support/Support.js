@@ -24,7 +24,9 @@ function Support() {
 
   function addSupportForm(data) {
     var dataNew = { ...data, userid: user.id };
-    addSupport(dataNew, dispatch);
+    addSupport(dataNew, dispatch).then(() => {
+      window.location.reload();
+    });
   }
 
   return (

@@ -21,6 +21,9 @@ import {
   authFailure,
   authStart,
   authSuccess,
+  deleteTicketFailure,
+  deleteTicketStart,
+  deleteTicketSuccess,
   getDiseasesFailure,
   getDiseasesStart,
   getDiseasesSuccess,
@@ -374,6 +377,22 @@ export const addVaccineList = async (data, dispatch) => {
       })
       .catch((error) => {
         dispatch(addVaccineListFailure(error));
+        reject(error);
+      });
+  });
+};
+
+export const deleteTicket = async (data, dispatch) => {
+  dispatch(deleteTicketStart());
+  return await new Promise((resolve, reject) => {
+    axios
+      .delete(`http://localhost:3001/api/support/ticket/${data}`)
+      .then((response) => {
+        dispatch(deleteTicketSuccess(response));
+        resolve(response);
+      })
+      .catch((error) => {
+        dispatch(deleteTicketFailure(error));
         reject(error);
       });
   });

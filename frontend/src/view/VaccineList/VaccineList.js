@@ -1,5 +1,5 @@
 import { ErrorMessage, Formik } from "formik";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import DataTable from "react-data-table-component";
 import SideBar from "../../components/SideBar/SideBar";
 import TopBar from "../../components/TopBar/TopBar";
@@ -10,6 +10,8 @@ import { addVaccineList, getVaccineList } from "../../context/apiCalls";
 function VaccineList() {
   const { user, dispatch } = useContext(MainContext);
   const [vaccineList, setVaccineList] = useState([]);
+  const nameRef = useRef();
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     getVaccineList(dispatch).then((response) => {
@@ -57,6 +59,26 @@ function VaccineList() {
       window.location.reload();
     });
   }
+
+  const handleSearch = (event) => {
+    setSearch("" + event.target.value + "");
+  };
+
+  const clearFilter = () => {
+    nameRef.current.value = "";
+    setSearch("");
+  };
+
+  const userToShow = search
+    ? vaccineList.filter(function (doctor) {
+        return (
+          doctor.province
+            .toLowerCase()
+            .indexOf("" + search.toLowerCase() + "") > -1
+        );
+      })
+    : vaccineList;
+
   return (
     <>
       <SideBar />
@@ -65,7 +87,30 @@ function VaccineList() {
         <div className="layout-container">
           <div className="shadow-sm p-3 mb-5 bg-white rounded filter-page">
             <h1 className="title">Vaccine List</h1>
-            <DataTable className="mt-4" columns={columns} data={vaccineList} />
+            <div className="filter-section mt-4">
+              <div className="row flex-wrap mt-3 mb-3">
+                <div className="col-3">
+                  <label className="name">Province</label>
+                  <input
+                    ref={nameRef}
+                    className="form-control mt-1"
+                    name="name"
+                    placeholder="Province..."
+                    onChange={handleSearch}
+                  />
+                </div>
+              </div>
+              <div className="d-flex justify-content-end">
+                <button
+                  type="button"
+                  className="btn btn-outline-primary ms-3"
+                  onClick={clearFilter}
+                >
+                  Clear
+                </button>
+              </div>
+            </div>
+            <DataTable className="mt-4" columns={columns} data={userToShow} />
           </div>
           {user.usertype !== "USER" ? (
             <div className="shadow-sm p-3 bg-white rounded filter-page">

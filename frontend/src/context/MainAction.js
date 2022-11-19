@@ -230,3 +230,15 @@ export const addVaccineListSuccess = () => ({
 export const addVaccineListFailure = () => ({
   type: "ADD_VACCINE_LIST_FAILURE",
 });
+
+export const deleteTicketStart = () => ({
+  type: "DELETE_TICKET_START",
+});
+
+export const deleteTicketSuccess = () => ({
+  type: "DELETE_TICKET_SUCCESS",
+});
+
+export const deleteTicketFailure = () => ({
+  type: "DELETE_TICKET_FAILURE",
+});

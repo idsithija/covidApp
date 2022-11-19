@@ -24,4 +24,12 @@ supportRouter.get("/getSupport", (request, response, next) => {
     });
 });
 
+supportRouter.delete("/ticket/:id", (request, response, next) => {
+  Support.findByIdAndRemove(request.params.id)
+    .then(() => {
+      response.status(204).end();
+    })
+    .catch((error) => next(error));
+});
+
 module.exports = supportRouter;
